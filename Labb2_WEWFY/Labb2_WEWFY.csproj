@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="Commands\" />
     <Folder Include="DialogWindows\" />
     <Folder Include="ViewModels\" />

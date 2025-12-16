@@ -10,3 +10,30 @@
 2.	Användaren kan göra egna träningspass som innehåller flera tränignsformer
 		Loggas med betyg
 3.	Visa aggregerad info som sorterar på parametrar
+
+
+Tabeller
+
+Träningsformer
+	string Uppvärmning
+	string Nedvarvning
+	string Intervaller
+	string Långlöpning
+	string Tävlingstempo
+
+TräningsDelPass
+	int Träningsform
+	int Längd i minuter
+	int TräningHelPass
+
+TräningHelPass
+	DateTime Datum
+	int Vatten i ml innan
+	int Vatten i ml under
+	bool Fueling
+	string Anteckningar
+	int UpplevelseBetyg
+
+Vyer
+	sortera på allt förutom Anteckningar antar jag?
+	Genomsnittsbetyg på något?

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labb2_WEWFY.Context
+namespace Labb2_WEWFY.Model
 {
     class WEWFYContext : DbContext
     {
