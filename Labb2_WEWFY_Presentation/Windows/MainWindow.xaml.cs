@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Labb2_WEWFY_Infrastructure.Data.Model;
 
 namespace Labb2_WEWFY_Presentation.Windows
 {
@@ -19,6 +20,9 @@ namespace Labb2_WEWFY_Presentation.Windows
         public MainWindow()
         {
             InitializeComponent();
+            using var db = new WEWFYContext();
+            db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
         }
     }
 }

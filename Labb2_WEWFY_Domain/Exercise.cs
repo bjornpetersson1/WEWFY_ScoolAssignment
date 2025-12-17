@@ -8,7 +8,7 @@ namespace Labb2_WEWFY_Domain
 {
     public class Exercise
     {
-        int Id { get; set; }
+        public int Id { get; set; }
         public required string ExerciseName { get; set; }
         public List<ExerciseLogger> ExerciseLoggers { get; set; }
     }

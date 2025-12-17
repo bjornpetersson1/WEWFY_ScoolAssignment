@@ -41,6 +41,5 @@ Vyer
 
 
 	TODO
-PK/FK
-Constraints
 User Secrets
+Testdata på Exercise och Exerciselogging

@@ -9,8 +9,7 @@ namespace Labb2_WEWFY_Domain
     public class ExerciseLogger
     {
         public int Id { get; set; }
-        public int Duration { get; set; }
-
+        public TimeOnly Duration { get; set; }
         public int ExerciseId { get; set; }
         public Exercise Exercise { get; set; }
         public int WorkoutId { get; set; }
