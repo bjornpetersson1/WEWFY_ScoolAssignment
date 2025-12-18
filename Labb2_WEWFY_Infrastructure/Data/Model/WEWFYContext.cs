@@ -30,6 +30,7 @@ public class WEWFYContext : DbContext
     {
         new WorkoutEntityTypeConfig().Configure(modelBuilder.Entity<Workout>());
         new ExerciseLoggerEntityTypeConfig().Configure(modelBuilder.Entity<ExerciseLogger>());
+        new ExerciseEntityTypeConfig().Configure(modelBuilder.Entity<Exercise>());
     }
 }
 

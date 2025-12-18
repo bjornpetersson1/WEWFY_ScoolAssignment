@@ -42,4 +42,24 @@ Vyer
 
 	TODO
 User Secrets
-Testdata på Exercise och Exerciselogging
+UI
+	fönster
+		Main
+		Redigera pass
+
+	vyer
+		Main
+		Logga
+		Tidigare pass
+			med lösning på granska enskilt pass
+		Instruktioner
+
+		
+		Main med knappar till
+			Logga träningspass
+			se tidigare pass (Här kan man sortera på olika saker)
+				Klicka upp enskilda pass (Nytt fönster eller något som dyker upp i vyn?)
+					Det är här man kan redigare tidigare pass också? (Det är ett nytt fönster)
+			Instruktioner
+			Total stats?
+				kanske en extrgrej om du hinner
