@@ -9,7 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
+    <None Remove="logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
@@ -23,6 +26,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Labb2_WEWFY_Infrastructure\Labb2_WEWFY_Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="logo.png" />
   </ItemGroup>
 
 </Project>

@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Labb2_WEWFY_Presentation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="300">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Image Source="/logo.png"
+               Grid.Row="0" 
+               VerticalAlignment="Stretch"
+               HorizontalAlignment="Stretch"/>
+        <StackPanel Grid.Row="1">
+            <Button Content="Register activity" />
+            <Button Content="Previous workouts" />
+            <Button Content="Instructions" />
+            <Button Content="Total stats" />
+            <Button Content="Quit" />
+        </StackPanel>
     </Grid>
 </Window>

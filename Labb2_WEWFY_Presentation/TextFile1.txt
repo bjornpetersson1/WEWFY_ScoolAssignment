@@ -63,3 +63,4 @@ UI
 			Instruktioner
 			Total stats?
 				kanske en extrgrej om du hinner
+			Quit
