@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,23 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Labb2_WEWFY_Infrastructure.Data.Model;
 using Labb2_WEWFY_Presentation.ViewModels;
 
-namespace Labb2_WEWFY_Presentation.Windows
+namespace Labb2_WEWFY_Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for RegisterActivity.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RegisterActivityView : UserControl
     {
-        public MainWindow()
+        public RegisterActivityView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
-            using var db = new WEWFYContext();
-            db.Database.EnsureDeleted();
-            db.Database.EnsureCreated();
+            DataContext = new RegisterActivityViewModel();
         }
     }
 }

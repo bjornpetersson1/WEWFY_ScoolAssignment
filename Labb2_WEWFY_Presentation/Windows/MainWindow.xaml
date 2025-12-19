@@ -8,19 +8,16 @@
         Title="MainWindow" Height="450" Width="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Image Source="/logo.png"
-               Grid.Row="0" 
-               VerticalAlignment="Stretch"
-               HorizontalAlignment="Stretch"/>
-        <StackPanel Grid.Row="1">
-            <Button Content="Register activity" />
-            <Button Content="Previous workouts" />
-            <Button Content="Instructions" />
-            <Button Content="Total stats" />
-            <Button Content="Quit" />
-        </StackPanel>
+        <DockPanel LastChildFill="False">
+            <Button Content="main menu" 
+                    DockPanel.Dock="Left"/>
+            <Button Content="quit"
+                    DockPanel.Dock="Right"/>
+        </DockPanel>
+        <ContentControl Content="{Binding CurrentView}"
+                        Grid.Row="1"/>
     </Grid>
 </Window>
