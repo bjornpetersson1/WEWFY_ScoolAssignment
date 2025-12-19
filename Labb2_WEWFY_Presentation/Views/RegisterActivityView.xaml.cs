@@ -19,12 +19,12 @@ namespace Labb2_WEWFY_Presentation.Views
     /// <summary>
     /// Interaction logic for RegisterActivity.xaml
     /// </summary>
-    public partial class RegisterActivityView : UserControl
+    public partial class RegisterWorkoutView : UserControl
     {
-        public RegisterActivityView()
+        public RegisterWorkoutView()
         {
             InitializeComponent();
-            DataContext = new RegisterActivityViewModel();
+            DataContext = new RegisterWorkoutViewModel();
         }
     }
 }

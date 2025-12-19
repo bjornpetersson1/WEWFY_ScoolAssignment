@@ -13,7 +13,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public InstructionsView InstructionsView { get; }
         public MenuView MenuView { get; }
         public PreviousWorkoutsView PreviousWorkoutsView { get; }
-        public RegisterActivityView RegisterActivityView { get; }
+        public RegisterWorkoutView RegisterWorkoutView { get; }
         public TotalStatsView TotalStatsView { get; }
         private UserControl? _currentView;
 
@@ -32,10 +32,10 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             InstructionsView = new InstructionsView();
             MenuView = new MenuView();
             PreviousWorkoutsView = new PreviousWorkoutsView();
-            RegisterActivityView = new RegisterActivityView();
+            RegisterWorkoutView = new RegisterWorkoutView();
             TotalStatsView = new TotalStatsView();
 
-            CurrentView = RegisterActivityView;
+            CurrentView = RegisterWorkoutView;
         }
     }
 }

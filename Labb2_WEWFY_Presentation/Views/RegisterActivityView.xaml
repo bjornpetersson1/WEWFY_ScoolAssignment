@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Labb2_WEWFY_Presentation.Views.RegisterActivityView"
+﻿<UserControl x:Class="Labb2_WEWFY_Presentation.Views.RegisterWorkoutView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -56,11 +56,11 @@
         <StackPanel Grid.Row="3">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="water before workout (ml): " />
-                <TextBox />
+                <TextBox Text="0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="water during workout (ml): " />
-                <TextBox />
+                <TextBox Text="0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="fueling during workout? " />

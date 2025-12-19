@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Labb2_WEWFY_Presentation.ViewModels
 {
-    class RegisterActivityViewModel : ViewModelBase
+    class RegisterWorkoutViewModel : ViewModelBase
     {
     }
 }
