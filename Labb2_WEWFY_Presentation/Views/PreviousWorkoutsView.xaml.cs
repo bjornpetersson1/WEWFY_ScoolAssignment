@@ -21,10 +21,12 @@ namespace Labb2_WEWFY_Presentation.Views
     /// </summary>
     public partial class PreviousWorkoutsView : UserControl
     {
-        public PreviousWorkoutsView()
+        public MainWindowViewModel MainVM { get; }
+        public PreviousWorkoutsView(MainWindowViewModel mainVM)
         {
             InitializeComponent();
-            DataContext = new PreviousWorkoutsViewModel();
+            MainVM = mainVM;
+            DataContext = this;
         }
     }
 }

@@ -21,10 +21,12 @@ namespace Labb2_WEWFY_Presentation.Views
     /// </summary>
     public partial class RegisterWorkoutView : UserControl
     {
-        public RegisterWorkoutView()
+        public MainWindowViewModel MainVM { get; }
+        public RegisterWorkoutView(MainWindowViewModel mainVM)
         {
             InitializeComponent();
-            DataContext = new RegisterWorkoutViewModel();
+            MainVM = mainVM;
+            DataContext = this;
         }
     }
 }

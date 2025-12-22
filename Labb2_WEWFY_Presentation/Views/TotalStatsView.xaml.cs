@@ -21,10 +21,12 @@ namespace Labb2_WEWFY_Presentation.Views
     /// </summary>
     public partial class TotalStatsView : UserControl
     {
-        public TotalStatsView()
+        public MainWindowViewModel MainVM { get; }
+        public TotalStatsView(MainWindowViewModel mainVM)
         {
             InitializeComponent();
-            DataContext = new TotalStatsViewModel();
+            MainVM = mainVM;
+            DataContext = this;
         }
     }
 }

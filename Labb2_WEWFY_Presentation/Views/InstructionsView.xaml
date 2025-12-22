@@ -15,6 +15,8 @@
                    HorizontalAlignment="Center"
                    Grid.Row="0" />
         <Button Content="OK"
+                Command="{Binding MainVM.ChangeCurrentViewCommand}"
+                CommandParameter="{Binding MainVM.MenuView}"
                 Grid.Row="1"/>
     </Grid>
 </UserControl>

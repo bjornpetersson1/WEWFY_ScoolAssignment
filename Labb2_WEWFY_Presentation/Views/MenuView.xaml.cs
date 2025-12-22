@@ -21,10 +21,17 @@ namespace Labb2_WEWFY_Presentation.Views
     /// </summary>
     public partial class MenuView : UserControl
     {
-        public MenuView()
+        public MainWindowViewModel MainVM { get; }
+        public MenuView(MainWindowViewModel mainVM)
         {
             InitializeComponent();
-            DataContext = new MenuViewModel();
+            MainVM = mainVM;
+            DataContext = this;
+        }
+
+        private void Button_Quit(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

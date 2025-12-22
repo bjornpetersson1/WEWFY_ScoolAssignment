@@ -21,10 +21,12 @@ namespace Labb2_WEWFY_Presentation.Views
     /// </summary>
     public partial class InstructionsView : UserControl
     {
-        public InstructionsView()
+        public MainWindowViewModel MainVM { get; }
+        public InstructionsView(MainWindowViewModel mainVM)
         {
             InitializeComponent();
-            //DataContext = new InstructionsViewModel();
+            MainVM = mainVM;
+            DataContext = this;
         }
     }
 }

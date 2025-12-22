@@ -16,11 +16,24 @@
        VerticalAlignment="Stretch"
        HorizontalAlignment="Stretch"/>
         <StackPanel Grid.Row="1">
-            <Button Content="Register activity" />
-            <Button Content="Previous workouts" />
-            <Button Content="Instructions" />
-            <Button Content="Total stats" />
-            <Button Content="Quit" />
+            <Button Content="Register workout"
+                    Command="{Binding MainVM.ChangeCurrentViewCommand}"
+                    CommandParameter="{Binding MainVM.RegisterWorkoutView}"
+                    />
+            <Button Content="Previous workouts" 
+                    Command="{Binding MainVM.ChangeCurrentViewCommand}"
+                    CommandParameter="{Binding MainVM.PreviousWorkoutsView}"
+                    />
+            <Button Content="Instructions" 
+                    Command="{Binding MainVM.ChangeCurrentViewCommand}"
+                    CommandParameter="{Binding MainVM.InstructionsView}" 
+                    />
+            <Button Content="Total stats" 
+                    Command="{Binding MainVM.ChangeCurrentViewCommand}"
+                    CommandParameter="{Binding MainVM.TotalStatsView}" 
+                    />
+            <Button Content="Quit"
+                    Click="Button_Quit"/>
         </StackPanel>
     </Grid>
 </UserControl>

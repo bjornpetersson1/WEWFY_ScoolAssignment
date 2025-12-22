@@ -26,5 +26,10 @@ namespace Labb2_WEWFY_Presentation.Windows
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
         }
+
+        private void Button_Quit(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

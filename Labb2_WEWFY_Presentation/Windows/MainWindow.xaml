@@ -13,8 +13,11 @@
         </Grid.RowDefinitions>
         <DockPanel LastChildFill="False">
             <Button Content="main menu" 
+                    Command="{Binding ChangeCurrentViewCommand}"
+                    CommandParameter="{Binding MenuView}"
                     DockPanel.Dock="Left"/>
             <Button Content="quit"
+                    Click="Button_Quit"
                     DockPanel.Dock="Right"/>
         </DockPanel>
         <ContentControl Content="{Binding CurrentView}"
