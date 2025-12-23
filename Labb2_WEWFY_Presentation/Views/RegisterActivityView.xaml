@@ -22,8 +22,9 @@
                 <ComboBox />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="duration: " />
-                <TextBox />
+                <TextBlock Text="duration (hh:mm:ss): " />
+                <TextBox 
+                    Text="00:00:00"/>
             </StackPanel>
             <Button Content="add exercise" />
         </StackPanel>
