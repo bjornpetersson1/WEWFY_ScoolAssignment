@@ -26,7 +26,7 @@ namespace Labb2_WEWFY_Presentation.Views
         {
             InitializeComponent();
             MainVM = mainVM;
-            DataContext = this;
+            DataContext = new PreviousWorkoutsViewModel();
         }
     }
 }

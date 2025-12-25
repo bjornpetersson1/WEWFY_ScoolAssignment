@@ -42,7 +42,8 @@ Vyer
 
 	TODO
 User Secrets
-Byta mellan vyer
+Fortsätt på previous workouts!! ladda in dat från alla tabeller
+
 
 
 UI

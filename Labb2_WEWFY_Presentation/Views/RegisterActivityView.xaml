@@ -19,7 +19,9 @@
         <StackPanel Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="choose exercise: " />                
-                <ComboBox />
+                <ComboBox 
+                    ItemsSource="{Binding Exercises}"
+                    SelectedItem="{Binding SelectedExcersise}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="duration (hh:mm:ss): " />

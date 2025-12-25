@@ -32,7 +32,8 @@
                   HorizontalScrollBarVisibility="Disabled"
                   AlternationCount="2"
                   RowBackground="WhiteSmoke"
-                  AlternatingRowBackground="White" >
+                  AlternatingRowBackground="White" 
+                  ItemsSource="{Binding Workouts}">
   
         </DataGrid>
         <DataGrid x:Name="mySelectedWorkout" 
@@ -52,8 +53,9 @@
                   HorizontalScrollBarVisibility="Disabled"
                   AlternationCount="2"
                   RowBackground="WhiteSmoke"
-                  AlternatingRowBackground="LightGray" >
-
+                  AlternatingRowBackground="LightGray" 
+                  >
+            
         </DataGrid>
     </Grid>
 </UserControl>
