@@ -16,5 +16,10 @@ namespace Labb2_WEWFY_Domain
         public string? Notes { get; set; }
         public int ExperienceRating { get; set; }
         public List<ExerciseLogger> ExerciseLoggers { get; set; }
+        public TimeSpan TotalDuration =>
+                        ExerciseLoggers?.Aggregate(
+                            TimeSpan.Zero,
+                            (sum, e) => sum + e.Duration
+                        ) ?? TimeSpan.Zero;
     }
 }

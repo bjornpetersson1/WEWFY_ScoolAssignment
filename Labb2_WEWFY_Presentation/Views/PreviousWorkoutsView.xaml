@@ -17,7 +17,7 @@
                    Grid.Row="0"/>
         <DataGrid x:Name="myDataGrid" 
                   Grid.Row="1"
-                  AutoGenerateColumns="True"
+                  AutoGenerateColumns="False"
                   IsReadOnly="True"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
@@ -27,14 +27,30 @@
                   CanUserSortColumns="True"
                   SelectionMode="Extended"
                   SelectionUnit="CellOrRowHeader"
-                  RowHeaderWidth="30"
-                  VerticalScrollBarVisibility="Visible"
-                  HorizontalScrollBarVisibility="Disabled"
+                  RowHeaderWidth="10"
+                  VerticalScrollBarVisibility="Hidden"
+                  HorizontalScrollBarVisibility="Hidden"
                   AlternationCount="2"
                   RowBackground="WhiteSmoke"
                   AlternatingRowBackground="White" 
                   ItemsSource="{Binding Workouts}">
-  
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date"
+                                    Binding="{Binding LoggingDate, StringFormat=yy\\/MM\\/dd}" />
+                <DataGridTextColumn Header="Duration"
+                                    Binding="{Binding TotalDuration, StringFormat=hh\\:mm\\:ss}" />
+                <DataGridTextColumn Header="Rating"
+                                    Binding="{Binding ExperienceRating}" />
+                <DataGridTemplateColumn Header="Notes">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Notes}"
+                                       TextTrimming="CharacterEllipsis"
+                                       MaxWidth="80"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="mySelectedWorkout" 
                   Grid.Row="2"

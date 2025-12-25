@@ -12,8 +12,18 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     class PreviousWorkoutsViewModel : ViewModelBase
     {
-        public ObservableCollection<ExerciseLogger> Workouts { get; set; }
         private ExerciseLogger? _selectedWorkout;
+        private ObservableCollection<Workout> workouts;
+        public ObservableCollection<Workout> Workouts 
+        {
+            get => workouts;
+            set
+            {
+                workouts = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public ExerciseLogger? SelectedWorkout
         {
             get => _selectedWorkout;
@@ -31,7 +41,9 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         private async void LoadPreviousWorkoutsAsync()
         {
             using var db = new WEWFYContext();
-            Workouts = new ObservableCollection<ExerciseLogger>(await db.ExerciseLoggers.ToListAsync());
+            Workouts = new ObservableCollection<Workout>(await db.Workouts
+                                                                .Include(w => w.ExerciseLoggers)
+                                                                .ToListAsync());
         }
     }
 }
