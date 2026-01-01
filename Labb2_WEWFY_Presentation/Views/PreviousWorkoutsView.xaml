@@ -56,46 +56,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <!--<DataGrid x:Name="mySelectedWorkout" 
-                  Grid.Row="2"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  CanUserReorderColumns="False"
-                  CanUserResizeRows="False"
-                  CanUserResizeColumns="False"
-                  CanUserSortColumns="True"
-                  SelectionMode="Extended"
-                  SelectionUnit="CellOrRowHeader"
-                  RowHeaderWidth="30"
-                  VerticalScrollBarVisibility="Disabled"
-                  HorizontalScrollBarVisibility="Disabled"
-                  AlternationCount="2"
-                  RowBackground="WhiteSmoke"
-                  AlternatingRowBackground="LightGray" 
-                  ItemsSource="{Binding SelectedWorkoutExercises}"
-                  >
-            <DataGridTextColumn Header="Date"
-                    Binding="{Binding LoggingDate, StringFormat=yy\\/MM\\/dd}" 
-                    Width="*"/>
-            <DataGridTextColumn Header="Duration"
-                    Binding="{Binding TotalDuration, StringFormat=hh\\:mm\\:ss}" 
-                    Width="*"/>
-            <DataGridTextColumn Header="Rating"
-                    Binding="{Binding ExperienceRating}" 
-                    Width="*"/>
-            <DataGridTemplateColumn Header="Notes">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Notes}"
-                       TextTrimming="CharacterEllipsis"
-                       MaxWidth="120"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-
-        </DataGrid>-->
         <Border Grid.Row="2"
         Padding="10"
         BorderBrush="Gray"

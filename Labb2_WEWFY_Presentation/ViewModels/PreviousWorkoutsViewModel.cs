@@ -13,15 +13,6 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     class PreviousWorkoutsViewModel : ViewModelBase
     {
-        //public DelegateCommand ShowWorkoutDetailsCommand { get; set; }
-        //public Action<object?> ShowWorkoutDetails { get; set; }
-        //public ObservableCollection<Workout>? SelectedWorkoutExercises
-        //{
-        //    get => SelectedWorkout? is null
-        //        ? null
-        //        : new ObservableCollection<Workout>(SelectedWorkout);
-        //}
-
         private ObservableCollection<Workout> workouts;
         public ObservableCollection<Workout> Workouts 
         {
@@ -41,23 +32,11 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             {
                 _selectedWorkout = value;
                 RaisePropertyChanged();
-                //ShowWorkoutDetailsCommand.RaiseCanExecuteChanged();
             }
         }
         public PreviousWorkoutsViewModel()
         {
             LoadPreviousWorkoutsAsync();
-            //ShowWorkoutDetailsCommand = new DelegateCommand(DoShowWorkoutDetails, CanShowWorkoutDetails);
-        }
-
-        private bool CanShowWorkoutDetails(object? arg)
-        {
-            return SelectedWorkout is not null;
-        }
-
-        private void DoShowWorkoutDetails(object? obj)
-        {
-            //ShowWorkoutDetails(obj);
         }
 
         private async void LoadPreviousWorkoutsAsync()
