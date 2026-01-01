@@ -42,11 +42,10 @@ Vyer
 
 	TODO
 User Secrets
-Fortsätt på previous workouts!! ladda in dat från alla tabeller
-	Sammanfattning:
-		date, total time, Rating, notes nedbantat(t ex 10 tecken eller nåt) *fixat*
-	Detaljerat
-		date, no of exercises, total time, Rating, notes
+Redigera tidigare workouts
+
+Fortsätt på previous workouts!! 
+		lös fuelinggrejen, extrem fullösning nu :)
 
 UI
 	fönster

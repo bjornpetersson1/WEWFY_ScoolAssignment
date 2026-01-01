@@ -44,6 +44,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             using var db = new WEWFYContext();
             Workouts = new ObservableCollection<Workout>(await db.Workouts
                                                                 .Include(w => w.ExerciseLoggers)
+                                                                .ThenInclude(el => el.Exercise)
                                                                 .ToListAsync());
         }
     }
