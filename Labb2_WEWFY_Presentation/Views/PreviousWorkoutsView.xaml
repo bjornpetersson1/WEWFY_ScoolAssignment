@@ -25,22 +25,26 @@
                   CanUserResizeRows="False"
                   CanUserResizeColumns="False"
                   CanUserSortColumns="True"
-                  SelectionMode="Extended"
-                  SelectionUnit="CellOrRowHeader"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
                   RowHeaderWidth="10"
                   VerticalScrollBarVisibility="Hidden"
                   HorizontalScrollBarVisibility="Hidden"
                   AlternationCount="2"
                   RowBackground="WhiteSmoke"
                   AlternatingRowBackground="White" 
-                  ItemsSource="{Binding Workouts}">
+                  ItemsSource="{Binding Workouts}"
+                  SelectedItem="{Binding SelectedWorkout, Mode=TwoWay}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date"
-                                    Binding="{Binding LoggingDate, StringFormat=yy\\/MM\\/dd}" />
+                                    Binding="{Binding LoggingDate, StringFormat=yy\\/MM\\/dd}" 
+                                    Width="*"/>
                 <DataGridTextColumn Header="Duration"
-                                    Binding="{Binding TotalDuration, StringFormat=hh\\:mm\\:ss}" />
+                                    Binding="{Binding TotalDuration, StringFormat=hh\\:mm\\:ss}" 
+                                    Width="*"/>
                 <DataGridTextColumn Header="Rating"
-                                    Binding="{Binding ExperienceRating}" />
+                                    Binding="{Binding ExperienceRating}" 
+                                    Width="*"/>
                 <DataGridTemplateColumn Header="Notes">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -52,9 +56,9 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="mySelectedWorkout" 
+        <!--<DataGrid x:Name="mySelectedWorkout" 
                   Grid.Row="2"
-                  AutoGenerateColumns="True"
+                  AutoGenerateColumns="False"
                   IsReadOnly="True"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
@@ -70,8 +74,46 @@
                   AlternationCount="2"
                   RowBackground="WhiteSmoke"
                   AlternatingRowBackground="LightGray" 
+                  ItemsSource="{Binding SelectedWorkoutExercises}"
                   >
-            
-        </DataGrid>
+            <DataGridTextColumn Header="Date"
+                    Binding="{Binding LoggingDate, StringFormat=yy\\/MM\\/dd}" 
+                    Width="*"/>
+            <DataGridTextColumn Header="Duration"
+                    Binding="{Binding TotalDuration, StringFormat=hh\\:mm\\:ss}" 
+                    Width="*"/>
+            <DataGridTextColumn Header="Rating"
+                    Binding="{Binding ExperienceRating}" 
+                    Width="*"/>
+            <DataGridTemplateColumn Header="Notes">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Notes}"
+                       TextTrimming="CharacterEllipsis"
+                       MaxWidth="120"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+        </DataGrid>-->
+        <Border Grid.Row="2"
+        Padding="10"
+        BorderBrush="Gray"
+        BorderThickness="1">
+
+            <StackPanel DataContext="{Binding SelectedWorkout}">
+
+                <TextBlock Text="Workout details"
+                   FontWeight="Bold"
+                   Margin="0,0,0,8"/>
+
+                <TextBlock Text="{Binding LoggingDate, StringFormat=Date: {0:yyyy-MM-dd}}" />
+                <TextBlock Text="{Binding TotalDuration, StringFormat=Duration: {0:hh\\:mm\\:ss}}" />
+                <TextBlock Text="{Binding ExperienceRating, StringFormat=Rating: {0}}" />
+                <TextBlock Text="{Binding Notes, StringFormat=Notes: {0}}"
+                   TextWrapping="Wrap"/>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

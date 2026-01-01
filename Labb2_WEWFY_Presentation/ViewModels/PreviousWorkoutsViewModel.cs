@@ -1,5 +1,6 @@
 ﻿using Labb2_WEWFY_Domain;
 using Labb2_WEWFY_Infrastructure.Data.Model;
+using Labb2_WEWFY_Presentation.Commands;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,15 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     class PreviousWorkoutsViewModel : ViewModelBase
     {
-        private ExerciseLogger? _selectedWorkout;
+        //public DelegateCommand ShowWorkoutDetailsCommand { get; set; }
+        //public Action<object?> ShowWorkoutDetails { get; set; }
+        //public ObservableCollection<Workout>? SelectedWorkoutExercises
+        //{
+        //    get => SelectedWorkout? is null
+        //        ? null
+        //        : new ObservableCollection<Workout>(SelectedWorkout);
+        //}
+
         private ObservableCollection<Workout> workouts;
         public ObservableCollection<Workout> Workouts 
         {
@@ -24,20 +33,33 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             }
         }
 
-        public ExerciseLogger? SelectedWorkout
+        private Workout? _selectedWorkout;
+        public Workout? SelectedWorkout
         {
             get => _selectedWorkout;
             set
             {
                 _selectedWorkout = value;
                 RaisePropertyChanged();
-                //ShowOrderDetailsCommand.RaiseCanExecuteChanged();
+                //ShowWorkoutDetailsCommand.RaiseCanExecuteChanged();
             }
         }
         public PreviousWorkoutsViewModel()
         {
             LoadPreviousWorkoutsAsync();
+            //ShowWorkoutDetailsCommand = new DelegateCommand(DoShowWorkoutDetails, CanShowWorkoutDetails);
         }
+
+        private bool CanShowWorkoutDetails(object? arg)
+        {
+            return SelectedWorkout is not null;
+        }
+
+        private void DoShowWorkoutDetails(object? obj)
+        {
+            //ShowWorkoutDetails(obj);
+        }
+
         private async void LoadPreviousWorkoutsAsync()
         {
             using var db = new WEWFYContext();

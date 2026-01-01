@@ -22,11 +22,19 @@ namespace Labb2_WEWFY_Presentation.Views
     public partial class PreviousWorkoutsView : UserControl
     {
         public MainWindowViewModel MainVM { get; }
+        private PreviousWorkoutsViewModel viewModel;
         public PreviousWorkoutsView(MainWindowViewModel mainVM)
         {
             MainVM = mainVM;
-            DataContext = new PreviousWorkoutsViewModel();
             InitializeComponent();
+            DataContext = viewModel = new PreviousWorkoutsViewModel()
+            {
+                //ShowWorkoutDetails = 
+            };
+        }
+        private void LoadWorkoutDetails()
+        {
+
         }
     }
 }
