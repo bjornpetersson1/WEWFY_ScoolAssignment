@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Labb2_WEWFY_Presentation.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="300" d:Background="White">
+             d:DesignHeight="450" d:DesignWidth="300" d:Background="White"
+             Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -59,24 +60,26 @@
         <StackPanel Grid.Row="3">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="water before workout (ml): " />
-                <TextBox Text="0"/>
+                <TextBox Text="{Binding WaterBefore, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="water during workout (ml): " />
-                <TextBox Text="0"/>
+                <TextBox Text="{Binding WaterDuring, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="fueling during workout? " />
-                <RadioButton Content="Yes" />
-                <RadioButton Content="No" IsChecked="True" />
+                <RadioButton Content="Yes" 
+                             IsChecked="{Binding Fueling}"/>
+                <RadioButton Content="No" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="notes: " />
-                <TextBox />
+                <TextBox Text="{Binding Notes}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="rate your experience: " />
-                <ComboBox>
+                <ComboBox   SelectedValue="{Binding ExperienceRating}"
+                            SelectedValuePath="Content">
                     <ComboBoxItem Content="1" />
                     <ComboBoxItem Content="2" />
                     <ComboBoxItem Content="3" IsSelected="True"/>

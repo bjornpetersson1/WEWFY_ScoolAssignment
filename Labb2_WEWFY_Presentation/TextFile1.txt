@@ -43,6 +43,7 @@ Vyer
 	TODO
 User Secrets
 Redigera tidigare workouts
+Gör så att detailed view bara dyker upp om en workout är markerad
 Lägg till workouts
 	Det går att lägga till nu och den ladas om i previous 
 		FIXA ATT LÄGGA TILL DATA
