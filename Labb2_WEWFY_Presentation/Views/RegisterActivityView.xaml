@@ -27,15 +27,16 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="duration (hh:mm:ss): " />
                 <TextBox 
-                    Text="00:00:00"/>
+                    Text="{Binding ExerciseDuration}"/>
             </StackPanel>
-            <Button Content="add exercise" />
+            <Button Content="add exercise" 
+                    Command="{Binding AddExerciseCommand}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2">
             <TextBlock Text="current workout" />
             <DataGrid x:Name="myWorkoutGrid" 
-              AutoGenerateColumns="True"
+              AutoGenerateColumns="False"
               IsReadOnly="True"
               CanUserAddRows="False"
               CanUserDeleteRows="False"
@@ -50,8 +51,12 @@
               HorizontalScrollBarVisibility="Disabled"
               AlternationCount="2"
               RowBackground="WhiteSmoke"
-              AlternatingRowBackground="White" >
-
+              AlternatingRowBackground="White" 
+              ItemsSource="{Binding CurrentWorkoutExercises}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Exercise" Binding="{Binding Exercise.ExerciseName}" />
+                    <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
+                </DataGrid.Columns>
             </DataGrid>
             <Button Content="remove exercise" 
                     DockPanel.Dock="Right"/>

@@ -8,6 +8,21 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     class RegisterWorkoutViewModel : ViewModelBase
     {
+        public DelegateCommand AddNewWorkoutCommand { get; set; }
+        public DelegateCommand AddExerciseCommand { get; set; }
+        private string _exerciseDuration = "00:00:00";
+        public string ExerciseDuration
+        {
+            get => _exerciseDuration;
+            set { _exerciseDuration = value; RaisePropertyChanged(); }
+        }
+
+        private ObservableCollection<ExerciseLoggerViewModel> _currentWorkoutExercises = new();
+        public ObservableCollection<ExerciseLoggerViewModel> CurrentWorkoutExercises
+        {
+            get => _currentWorkoutExercises;
+            set { _currentWorkoutExercises = value; RaisePropertyChanged(); }
+        }
 
         private int _waterBefore;
         public int WaterBefore
@@ -43,7 +58,6 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             get => _experienceRating;
             set { _experienceRating = value; RaisePropertyChanged(); }
         }
-        public DelegateCommand AddNewWorkoutCommand { get; set; }
 
         private ObservableCollection<string>? _exercises;
         public ObservableCollection<string>? Exercises
@@ -66,6 +80,35 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public RegisterWorkoutViewModel()
         {
             AddNewWorkoutCommand = new DelegateCommand(AddNewWorkout);
+            AddExerciseCommand = new DelegateCommand(AddExercise);
+        }
+
+        private async void AddExercise(object? obj)
+        {
+            if (string.IsNullOrWhiteSpace(SelectedExcersise))
+                return;
+
+            if (!TimeSpan.TryParse(ExerciseDuration, out var duration))
+                return;
+
+            using var db = new WEWFYContext();
+
+            var exercise = await db.Exercises
+                .Where(e => e.ExerciseName == SelectedExcersise)
+                .Select(e => new { e.Id, e.ExerciseName })
+                .FirstOrDefaultAsync();
+
+            if (exercise == null)
+                return;
+
+            CurrentWorkoutExercises.Add(new ExerciseLoggerViewModel
+            {
+                ExerciseId = exercise.Id,
+                ExerciseName = exercise.ExerciseName,
+                Duration = duration
+            });
+
+            ExerciseDuration = "00:00:00";
         }
 
         private void AddNewWorkout(object? obj)
@@ -97,8 +140,21 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 ExerciseLoggers = new List<ExerciseLogger>()
             };
 
-            db.Add(workout);
+            db.Workouts.Add(workout);
             await db.SaveChangesAsync();
+
+            foreach (var vm in CurrentWorkoutExercises)
+            {
+                db.ExerciseLoggers.Add(new ExerciseLogger
+                {
+                    WorkoutId = workout.Id,
+                    ExerciseId = vm.ExerciseId,
+                    Duration = vm.Duration
+                });
+            }
+
+            await db.SaveChangesAsync();
+            CurrentWorkoutExercises.Clear();
         }
     }
 }
