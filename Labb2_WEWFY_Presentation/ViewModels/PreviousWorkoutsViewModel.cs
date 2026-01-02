@@ -36,10 +36,14 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         }
         public PreviousWorkoutsViewModel()
         {
-            LoadPreviousWorkoutsAsync();
+
+        }
+        public async Task OnNavigatedToAsync()
+        {
+            await LoadPreviousWorkoutsAsync();
         }
 
-        private async void LoadPreviousWorkoutsAsync()
+        public async Task LoadPreviousWorkoutsAsync()
         {
             using var db = new WEWFYContext();
             Workouts = new ObservableCollection<Workout>(await db.Workouts

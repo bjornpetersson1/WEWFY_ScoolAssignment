@@ -20,11 +20,11 @@ namespace Labb2_WEWFY_Presentation.Windows
     {
         public MainWindow()
         {
-            InitializeComponent();
-            DataContext = new MainWindowViewModel();
             using var db = new WEWFYContext();
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
+            InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
 
         private void Button_Quit(object sender, RoutedEventArgs e)

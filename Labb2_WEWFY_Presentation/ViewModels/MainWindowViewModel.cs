@@ -27,6 +27,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 _currentView = value;
                 RaisePropertyChanged();
                 ChangeCurrentViewCommand.RaiseCanExecuteChanged();
+
             }
         }
 

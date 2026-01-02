@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Labb2_WEWFY_Presentation.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="300" d:Background="White">
+             d:DesignHeight="450" d:DesignWidth="300" d:Background="White"
+             Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -95,14 +96,6 @@
                                 <DataTrigger Binding="{Binding Fueling}" Value="True">
                                     <Setter Property="Text" Value="Fueling: Yes"/>
                                 </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-                <TextBlock>
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
                                 <DataTrigger Binding="{Binding Fueling}" Value="False">
                                     <Setter Property="Text" Value="Fueling: No"/>
                                 </DataTrigger>

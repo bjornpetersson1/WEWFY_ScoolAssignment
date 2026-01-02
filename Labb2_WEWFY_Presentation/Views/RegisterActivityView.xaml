@@ -85,7 +85,8 @@
                 </ComboBox>
             </StackPanel>
 
-            <Button Content="add workout" />
+            <Button Content="add workout" 
+                    Command="{Binding AddNewWorkoutCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>
