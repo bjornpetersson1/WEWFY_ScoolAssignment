@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Labb2_WEWFY_Presentation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300">
+        Title="MainWindow" Height="550" Width="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <DockPanel LastChildFill="False">
             <Button Content="main menu" 
                     Command="{Binding ChangeCurrentViewCommand}"
                     CommandParameter="{Binding MenuView}"
-                    DockPanel.Dock="Left"/>
+                    DockPanel.Dock="Left"
+                    />
             <Button Content="quit"
                     Click="Button_Quit"
-                    DockPanel.Dock="Right"/>
+                    DockPanel.Dock="Right"
+                    />
         </DockPanel>
         <ContentControl Content="{Binding CurrentView}"
                         Grid.Row="1"/>

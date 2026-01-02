@@ -45,20 +45,22 @@
               CanUserResizeColumns="False"
               CanUserSortColumns="True"
               SelectionMode="Extended"
-              SelectionUnit="CellOrRowHeader"
+              SelectionUnit="FullRow"
               RowHeaderWidth="30"
               VerticalScrollBarVisibility="Visible"
               HorizontalScrollBarVisibility="Disabled"
               AlternationCount="2"
               RowBackground="WhiteSmoke"
               AlternatingRowBackground="White" 
-              ItemsSource="{Binding CurrentWorkoutExercises}">
+              ItemsSource="{Binding CurrentWorkoutExercises}"
+              SelectedItem="{Binding SelectedWorkoutExercise}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Exercise" Binding="{Binding Exercise.ExerciseName}" />
+                    <DataGridTextColumn Header="Exercise" Binding="{Binding ExerciseName}" />
                     <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
                 </DataGrid.Columns>
             </DataGrid>
             <Button Content="remove exercise" 
+                    Command="{Binding RemoveExerciseCommand}"
                     DockPanel.Dock="Right"/>
         </StackPanel>
 

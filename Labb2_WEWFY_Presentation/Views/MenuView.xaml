@@ -8,32 +8,42 @@
              d:DesignHeight="450" d:DesignWidth="300" d:Background="White">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Image Source="/logo.png"
        Grid.Row="0" 
        VerticalAlignment="Stretch"
        HorizontalAlignment="Stretch"/>
         <StackPanel Grid.Row="1">
-            <Button Content="Register workout"
+            <Button Content="register workout"
                     Command="{Binding MainVM.ChangeCurrentViewCommand}"
                     CommandParameter="{Binding MainVM.RegisterWorkoutView}"
+                    Margin="5"
+                    Height="30"
                     />
-            <Button Content="Previous workouts" 
+            <Button Content="previous workouts" 
                     Command="{Binding MainVM.ChangeCurrentViewCommand}"
                     CommandParameter="{Binding MainVM.PreviousWorkoutsView}"
+                    Margin="5"
+                    Height="30"
                     />
-            <Button Content="Instructions" 
+            <Button Content="instructions" 
                     Command="{Binding MainVM.ChangeCurrentViewCommand}"
                     CommandParameter="{Binding MainVM.InstructionsView}" 
+                    Margin="5"
+                    Height="30"
                     />
-            <Button Content="Total stats" 
+            <Button Content="total stats" 
                     Command="{Binding MainVM.ChangeCurrentViewCommand}"
                     CommandParameter="{Binding MainVM.TotalStatsView}" 
+                    Margin="5"
+                    Height="30"
                     />
-            <Button Content="Quit"
-                    Click="Button_Quit"/>
+            <Button Content="quit"
+                    Click="Button_Quit"
+                    Margin="5"
+                    Height="30"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -43,5 +43,19 @@ Vyer
 	TODO
 User Secrets
 Redigera tidigare workouts
-Gör så att detailed view bara dyker upp om en workout är markerad
 Fixa en CanAddExercise och CanAddWorkout i commandsen
+Någon feedback på AddWorkout och eventuellt tillbaka till main
+
+Design
+	Rubrikerna på varje view borde matcha logon (ev ändra logon till ren text också)
+	Knapparnas storlek och placering
+	Padding innan och efter texten
+	Add workout är kaosdesignad
+		placering
+		datagriden
+		storlek
+		scroll
+	Gör så att detailed view bara dyker upp om en workout är markerad
+
+
+

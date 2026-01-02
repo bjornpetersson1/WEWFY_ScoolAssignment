@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\CourierPrime-Regular.ttf" />
     <None Remove="logo.png" />
   </ItemGroup>
 
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\CourierPrime-Regular.ttf" />
     <Resource Include="logo.png" />
   </ItemGroup>
 

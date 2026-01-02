@@ -10,6 +10,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
     {
         public DelegateCommand AddNewWorkoutCommand { get; set; }
         public DelegateCommand AddExerciseCommand { get; set; }
+        public DelegateCommand RemoveExerciseCommand { get; set; }
         private string _exerciseDuration = "00:00:00";
         public string ExerciseDuration
         {
@@ -22,6 +23,18 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         {
             get => _currentWorkoutExercises;
             set { _currentWorkoutExercises = value; RaisePropertyChanged(); }
+        }
+
+        private ExerciseLoggerViewModel _selectedWorkoutExercise;
+        public ExerciseLoggerViewModel SelectedWorkoutExercise
+        {
+            get => _selectedWorkoutExercise;
+            set
+            {
+                _selectedWorkoutExercise = value;
+                RaisePropertyChanged();
+                RemoveExerciseCommand.RaiseCanExecuteChanged();
+            }
         }
 
         private int _waterBefore;
@@ -81,6 +94,21 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         {
             AddNewWorkoutCommand = new DelegateCommand(AddNewWorkout);
             AddExerciseCommand = new DelegateCommand(AddExercise);
+            RemoveExerciseCommand = new DelegateCommand(RemoveExercise, CanRemoveExercise);
+        }
+
+        private bool CanRemoveExercise(object? arg)
+        {
+            return SelectedWorkoutExercise != null;
+        }
+
+        private void RemoveExercise(object? obj)
+        {
+            if (SelectedWorkoutExercise == null)
+                return;
+
+            CurrentWorkoutExercises.Remove(SelectedWorkoutExercise);
+            SelectedWorkoutExercise = null;
         }
 
         private async void AddExercise(object? obj)
