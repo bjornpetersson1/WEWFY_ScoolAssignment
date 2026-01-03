@@ -18,42 +18,52 @@
                    HorizontalAlignment="Center"
                    Grid.Row="0"/>
         <StackPanel Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 0 0 0">
                 <TextBlock Text="choose exercise: " />                
                 <ComboBox 
                     ItemsSource="{Binding Exercises}"
                     SelectedItem="{Binding SelectedExcersise}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 0 0 5">
                 <TextBlock Text="duration (hh:mm:ss): " />
                 <TextBox 
-                    Text="{Binding ExerciseDuration}"/>
+                    Text="{Binding ExerciseDuration}"
+                    Width="50"/>
             </StackPanel>
             <Button Content="add exercise" 
-                    Command="{Binding AddExerciseCommand}"/>
+                    Command="{Binding AddExerciseCommand}"
+                    Width="165"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2">
-            <TextBlock Text="current workout" />
+            <TextBlock Text="current workout" 
+                       HorizontalAlignment="Center"
+                       Margin="10 0 0 0"/>
             <DataGrid x:Name="myWorkoutGrid" 
-              AutoGenerateColumns="False"
-              IsReadOnly="True"
-              CanUserAddRows="False"
-              CanUserDeleteRows="False"
-              CanUserReorderColumns="False"
-              CanUserResizeRows="False"
-              CanUserResizeColumns="False"
-              CanUserSortColumns="True"
-              SelectionMode="Extended"
-              SelectionUnit="FullRow"
-              RowHeaderWidth="30"
-              VerticalScrollBarVisibility="Visible"
-              HorizontalScrollBarVisibility="Disabled"
-              AlternationCount="2"
-              RowBackground="WhiteSmoke"
-              AlternatingRowBackground="White" 
-              ItemsSource="{Binding CurrentWorkoutExercises}"
-              SelectedItem="{Binding SelectedWorkoutExercise}">
+                      Margin="10 0 10 0"
+                      Width="155"
+                      Height="110"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="False"
+                      CanUserResizeRows="False"
+                      CanUserResizeColumns="False"
+                      CanUserSortColumns="True"
+                      SelectionMode="Extended"
+                      SelectionUnit="FullRow"
+                      RowHeaderWidth="0"
+                      VerticalScrollBarVisibility="Visible"
+                      HorizontalScrollBarVisibility="Disabled"
+                      AlternationCount="2"
+                      RowBackground="WhiteSmoke"
+                      AlternatingRowBackground="White" 
+                      ItemsSource="{Binding CurrentWorkoutExercises}"
+                      SelectedItem="{Binding SelectedWorkoutExercise}"
+                      >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Exercise" Binding="{Binding ExerciseName}" />
                     <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
@@ -61,29 +71,39 @@
             </DataGrid>
             <Button Content="remove exercise" 
                     Command="{Binding RemoveExerciseCommand}"
-                    DockPanel.Dock="Right"/>
+                    HorizontalAlignment="Center"
+                    Width="165"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 0 0 0">
                 <TextBlock Text="water before workout (ml): " />
-                <TextBox Text="{Binding WaterBefore, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding WaterBefore, UpdateSourceTrigger=PropertyChanged}"
+                         Width="35"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 0 0 0">
                 <TextBlock Text="water during workout (ml): " />
-                <TextBox Text="{Binding WaterDuring, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding WaterDuring, UpdateSourceTrigger=PropertyChanged}"
+                         Width="35"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 0 0 0">
                 <TextBlock Text="fueling during workout? " />
                 <RadioButton Content="Yes" 
                              IsChecked="{Binding Fueling}"/>
-                <RadioButton Content="No" />
+                <RadioButton Content="No" 
+                             IsChecked="True"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 0 0 0">
                 <TextBlock Text="notes: " />
-                <TextBox Text="{Binding Notes}"/>
+                <TextBox Text="{Binding Notes}"
+                         Width="215"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 0 0 5">
                 <TextBlock Text="rate your experience: " />
                 <ComboBox   SelectedValue="{Binding ExperienceRating}"
                             SelectedValuePath="Content">
@@ -96,7 +116,8 @@
             </StackPanel>
 
             <Button Content="add workout" 
-                    Command="{Binding AddNewWorkoutCommand}"/>
+                    Command="{Binding AddNewWorkoutCommand}"
+                    Margin="5 0 5 0"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -50,11 +50,8 @@ Design
 	Rubrikerna på varje view borde matcha logon (ev ändra logon till ren text också)
 	Knapparnas storlek och placering
 	Padding innan och efter texten
-	Add workout är kaosdesignad
-		placering
-		datagriden
-		storlek
-		scroll
+	Add workout
+		flytta datagriden till bredvid exercisevalen
 	Gör så att detailed view bara dyker upp om en workout är markerad
 
 

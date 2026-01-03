@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:Labb2_WEWFY_Presentation"
              StartupUri="Windows\MainWindow.xaml">
     <Application.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Labb2_WEWFY_Presentation;component/Fonts/#Courier Prime"/>
+        </Style>
         <Style TargetType="Button">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
