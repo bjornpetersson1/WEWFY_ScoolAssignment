@@ -11,7 +11,8 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <DockPanel LastChildFill="False">
+        <DockPanel LastChildFill="False"
+                   Background="#e8cccc">
             <Button Content="main menu" 
                     Command="{Binding ChangeCurrentViewCommand}"
                     CommandParameter="{Binding MenuView}"
@@ -22,7 +23,17 @@
                     DockPanel.Dock="Right"
                     />
         </DockPanel>
-        <ContentControl Content="{Binding CurrentView}"
-                        Grid.Row="1"/>
+        <Grid Grid.Row="1"
+              Background="#e8cccc">
+            <Border 
+                Background="White"
+            BorderBrush="Black"
+            BorderThickness="2"
+            Margin="5"
+            Padding="5">
+                <ContentControl Content="{Binding CurrentView}" />
+            </Border>
+            
+        </Grid>
     </Grid>
 </Window>

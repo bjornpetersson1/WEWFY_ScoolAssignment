@@ -11,6 +11,16 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public DelegateCommand AddNewWorkoutCommand { get; set; }
         public DelegateCommand AddExerciseCommand { get; set; }
         public DelegateCommand RemoveExerciseCommand { get; set; }
+        private bool _isMessageVisible;
+        public bool IsMessageVisible
+        {
+            get => _isMessageVisible;
+            set
+            {
+                _isMessageVisible = value;
+                RaisePropertyChanged();
+            }
+        }
         private string _exerciseDuration = "00:00:00";
         public string ExerciseDuration
         {
@@ -183,6 +193,14 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
             await db.SaveChangesAsync();
             CurrentWorkoutExercises.Clear();
+            ShowSuccesfulSave();          
+        }
+
+        public async void ShowSuccesfulSave()
+        {
+            IsMessageVisible = true;
+            await Task.Delay(3000);
+            IsMessageVisible = false;
         }
     }
 }

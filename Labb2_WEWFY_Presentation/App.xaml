@@ -2,8 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Labb2_WEWFY_Presentation"
+             xmlns:conv="clr-namespace:Labb2_WEWFY_Presentation.Converters"
              StartupUri="Windows\MainWindow.xaml">
     <Application.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/Labb2_WEWFY_Presentation;component/Fonts/#Courier Prime"/>
         </Style>

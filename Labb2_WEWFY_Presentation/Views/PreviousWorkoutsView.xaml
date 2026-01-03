@@ -28,7 +28,7 @@
                   CanUserSortColumns="True"
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
-                  RowHeaderWidth="10"
+                  RowHeaderWidth="0"
                   VerticalScrollBarVisibility="Auto"
                   HorizontalScrollBarVisibility="Hidden"
                   AlternationCount="2"
@@ -39,14 +39,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date"
                                     Binding="{Binding LoggingDate, StringFormat=yy\\/MM\\/dd}" 
-                                    Width="*"/>
+                                    Width="55"/>
                 <DataGridTextColumn Header="Duration"
                                     Binding="{Binding TotalDuration, StringFormat=hh\\:mm\\:ss}" 
-                                    Width="*"/>
+                                    Width="70"/>
                 <DataGridTextColumn Header="Rating"
                                     Binding="{Binding ExperienceRating}" 
-                                    Width="*"/>
-                <DataGridTemplateColumn Header="Notes">
+                                    Width="55"/>
+                <DataGridTemplateColumn Header="Notes"
+                                        Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Notes}"

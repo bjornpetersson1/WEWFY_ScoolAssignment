@@ -36,5 +36,13 @@ namespace Labb2_WEWFY_Presentation.Views
                 await vm.LoadExcersisesAsync();
             }
         }
+
+        private async void AddWorkout_Click(object sender, RoutedEventArgs e)
+        {
+            addWorkout.IsEnabled = false;
+            await Task.Delay(2000);
+            MainVM.CurrentView = MainVM.MenuView;
+            addWorkout.IsEnabled = true;
+        }
     }
 }

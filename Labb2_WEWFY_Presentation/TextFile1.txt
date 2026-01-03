@@ -42,17 +42,21 @@ Vyer
 
 	TODO
 User Secrets
+instruktioner
+Total stats :)
+Anpassa så man kan se en träning med extremt många exercises utan att ändra fönsterstorlek
+Inaktivera att ändra fönsterstorlek
 Redigera tidigare workouts
 Fixa en CanAddExercise och CanAddWorkout i commandsen
-Någon feedback på AddWorkout och eventuellt tillbaka till main
+Fixa säkerheten med att spamma AddWorkout
+	Löst det genom clickevent. Känns dock inte som en MVVM-vänlig lösning
 
 Design
 	Rubrikerna på varje view borde matcha logon (ev ändra logon till ren text också)
 	Knapparnas storlek och placering
 	Padding innan och efter texten
-	Add workout
-		flytta datagriden till bredvid exercisevalen
 	Gör så att detailed view bara dyker upp om en workout är markerad
+	Fueling i detaljerad view har fel typsnitt
 
 
 

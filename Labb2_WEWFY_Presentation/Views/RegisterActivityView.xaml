@@ -53,10 +53,10 @@
                       CanUserResizeRows="False"
                       CanUserResizeColumns="False"
                       CanUserSortColumns="True"
-                      SelectionMode="Extended"
+                      SelectionMode="Single"
                       SelectionUnit="FullRow"
                       RowHeaderWidth="0"
-                      VerticalScrollBarVisibility="Visible"
+                      VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
                       AlternationCount="2"
                       RowBackground="WhiteSmoke"
@@ -65,8 +65,14 @@
                       SelectedItem="{Binding SelectedWorkoutExercise}"
                       >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Exercise" Binding="{Binding ExerciseName}" />
-                    <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
+                    <DataGridTextColumn 
+                        Header="Exercise" 
+                        Binding="{Binding ExerciseName}" 
+                        Width="*"/>
+                    <DataGridTextColumn 
+                        Header="Duration" 
+                        Binding="{Binding Duration}"
+                        Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button Content="remove exercise" 
@@ -100,7 +106,7 @@
                         Margin="10 0 0 0">
                 <TextBlock Text="notes: " />
                 <TextBox Text="{Binding Notes}"
-                         Width="215"/>
+                         Width="179"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 5">
@@ -115,9 +121,20 @@
                 </ComboBox>
             </StackPanel>
 
-            <Button Content="add workout" 
+            <Button 
+                x:Name="addWorkout"
+                Content="add workout" 
                     Command="{Binding AddNewWorkoutCommand}"
-                    Margin="5 0 5 0"/>
+                    Margin="5 0 5 5"
+                    Click="AddWorkout_Click"/>
+            <TextBlock 
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="15"
+                Text="workout added successfully"
+                Foreground="#e89797"       
+                Visibility="{Binding IsMessageVisible,
+                             Converter={StaticResource BoolToVisibilityConverter}}"/>
         </StackPanel>
     </Grid>
 </UserControl>
