@@ -1,6 +1,7 @@
 ﻿using Labb2_WEWFY_Domain;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,11 @@ public class WEWFYContext : DbContext
     public DbSet<Exercise> Exercises { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        var config = new ConfigurationBuilder().AddUserSecrets<WEWFYContext>().Build();
         var connectionString = new SqlConnectionStringBuilder()
         {
-            ServerSPN = "localhost",
-            InitialCatalog = "WEWFYDb",
+            ServerSPN = config["ServerName"],
+            InitialCatalog = config["DataBase"],
             TrustServerCertificate = true,
             IntegratedSecurity = true
         }.ToString();
