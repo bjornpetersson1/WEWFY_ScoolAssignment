@@ -44,19 +44,15 @@ Vyer
 User Secrets
 instruktioner
 Total stats :)
-Anpassa så man kan se en träning med extremt många exercises utan att ändra fönsterstorlek
-Inaktivera att ändra fönsterstorlek
 Redigera tidigare workouts
 Fixa en CanAddExercise och CanAddWorkout i commandsen
 Fixa säkerheten med att spamma AddWorkout
-	Löst det genom clickevent. Känns dock inte som en MVVM-vänlig lösning
+	Har löst det genom clickevent. Känns dock inte som en MVVM-vänlig lösning
+När man börjar lägga till en workout och sen byter vy och sen tillbaka till workout så är det man skrev in kvar, ska det va så? bugg eller feature?
 
 Design
-	Rubrikerna på varje view borde matcha logon (ev ändra logon till ren text också)
 	Knapparnas storlek och placering
 	Padding innan och efter texten
-	Gör så att detailed view bara dyker upp om en workout är markerad
-	Fueling i detaljerad view har fel typsnitt
 
 
 

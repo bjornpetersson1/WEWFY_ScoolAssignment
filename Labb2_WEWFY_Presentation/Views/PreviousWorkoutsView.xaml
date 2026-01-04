@@ -15,6 +15,9 @@
         </Grid.RowDefinitions>
         <TextBlock Text="previous workouts"
                    HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontSize="20"
                    Grid.Row="0"/>
         <DataGrid x:Name="myDataGrid" 
                   Grid.Row="1"
@@ -36,17 +39,28 @@
                   AlternatingRowBackground="White" 
                   ItemsSource="{Binding Workouts}"
                   SelectedItem="{Binding SelectedWorkout, Mode=TwoWay}">
+            <DataGrid.Style>
+                <Style TargetType="DataGrid">
+                    <Setter Property="Grid.RowSpan" Value="2"/>
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HaveSelectedWorkout}" Value="True">
+                            <Setter Property="Grid.RowSpan" Value="1"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Style>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date"
+                <DataGridTextColumn Header="date"
                                     Binding="{Binding LoggingDate, StringFormat=yy\\/MM\\/dd}" 
                                     Width="55"/>
-                <DataGridTextColumn Header="Duration"
+                <DataGridTextColumn Header="duration"
                                     Binding="{Binding TotalDuration, StringFormat=hh\\:mm\\:ss}" 
                                     Width="70"/>
-                <DataGridTextColumn Header="Rating"
+                <DataGridTextColumn Header="rating"
                                     Binding="{Binding ExperienceRating}" 
                                     Width="55"/>
-                <DataGridTemplateColumn Header="Notes"
+                <DataGridTemplateColumn Header="notes"
                                         Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -58,56 +72,63 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Border Grid.Row="2"
-        Padding="10"
-        BorderBrush="Gray"
-        BorderThickness="1">
+        <Border 
+            Grid.Row="2"
+            Padding="10"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            Visibility="{Binding HaveSelectedWorkout, Converter={StaticResource BoolToVisibilityConverter}}">
 
-            <StackPanel DataContext="{Binding SelectedWorkout}">
+            <ScrollViewer
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Disabled">
+                <StackPanel DataContext="{Binding SelectedWorkout}">
+                    <TextBlock Text="details"
+                        FontWeight="Bold"
+                        Margin="0 0 0 8"/>
 
-                <TextBlock Text="Details"
-                   FontWeight="Bold"
-                   Margin="0 0 0 8"/>
+                    <TextBlock Text="{Binding LoggingDate, StringFormat=Date: {0:yyyy-MM-dd}}" />
+                    <TextBlock Text="{Binding NumOfExercises, StringFormat=Number of exercises: {0}}" />
+                    <ItemsControl ItemsSource="{Binding ExerciseLoggers}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel>
 
-                <TextBlock Text="{Binding LoggingDate, StringFormat=Date: {0:yyyy-MM-dd}}" />
-                <TextBlock Text="{Binding NumOfExercises, StringFormat=Number of exercises: {0}}" />
-                <ItemsControl ItemsSource="{Binding ExerciseLoggers}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <DockPanel>
+                                    <TextBlock Text="{Binding Exercise.ExerciseName}"
+                                        Margin="20 0 0 0"
+                                        Width="100"/>
 
-                                <TextBlock Text="{Binding Exercise.ExerciseName}"
-                                   Margin="20 0 0 0"
-                                   Width="100"/>
+                                    <TextBlock Text="{Binding Duration, StringFormat={}{0:hh\\:mm\\:ss}}"
+                                        HorizontalAlignment="Left"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock Text="{Binding TotalDuration, StringFormat=Duration: {0:hh\\:mm\\:ss}}" />
+                    <TextBlock Text="{Binding ExperienceRating, StringFormat=Rating: {0}}" />
+                    <TextBlock Text="{Binding WaterBefore, StringFormat=Water before: {0} ml}" />
+                    <TextBlock Text="{Binding WaterDuring, StringFormat=Water during: {0} ml}" />
+                    <TextBlock>
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Fueling}" Value="True">
+                                        <Setter Property="Text" Value="Fueling: Yes"/>
+                                        <Setter Property="FontFamily" Value="pack://application:,,,/Labb2_WEWFY_Presentation;component/Fonts/#Courier Prime" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Fueling}" Value="False">
+                                        <Setter Property="Text" Value="Fueling: No"/>
+                                        <Setter Property="FontFamily" Value="pack://application:,,,/Labb2_WEWFY_Presentation;component/Fonts/#Courier Prime" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Text="{Binding Notes, StringFormat=Notes: {0}}"
+                        TextWrapping="Wrap"/>
 
-                                <TextBlock Text="{Binding Duration, StringFormat={}{0:hh\\:mm\\:ss}}"
-                                   HorizontalAlignment="Left"/>
-                            </DockPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                <TextBlock Text="{Binding TotalDuration, StringFormat=Duration: {0:hh\\:mm\\:ss}}" />
-                <TextBlock Text="{Binding ExperienceRating, StringFormat=Rating: {0}}" />
-                <TextBlock Text="{Binding WaterBefore, StringFormat=Water before: {0} ml}" />
-                <TextBlock Text="{Binding WaterDuring, StringFormat=Water during: {0} ml}" />
-                <TextBlock>
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Fueling}" Value="True">
-                                    <Setter Property="Text" Value="Fueling: Yes"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Fueling}" Value="False">
-                                    <Setter Property="Text" Value="Fueling: No"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-                <TextBlock Text="{Binding Notes, StringFormat=Notes: {0}}"
-                   TextWrapping="Wrap"/>
-
-            </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
         </Border>
     </Grid>
 </UserControl>

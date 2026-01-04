@@ -13,6 +13,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     class PreviousWorkoutsViewModel : ViewModelBase
     {
+        public bool HaveSelectedWorkout => SelectedWorkout != null;
         private ObservableCollection<Workout> workouts;
         public ObservableCollection<Workout> Workouts 
         {
@@ -32,6 +33,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             {
                 _selectedWorkout = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged(nameof(HaveSelectedWorkout));
             }
         }
         public PreviousWorkoutsViewModel()
