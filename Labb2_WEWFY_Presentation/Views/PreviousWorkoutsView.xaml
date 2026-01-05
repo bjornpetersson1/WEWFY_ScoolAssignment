@@ -129,7 +129,18 @@
                     </TextBlock>
                     <TextBlock Text="{Binding Notes, StringFormat=Notes: {0}}"
                         TextWrapping="Wrap"/>
-
+                    <DockPanel Margin="0 10 0 0"
+                               DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <Button 
+                            DockPanel.Dock="Left"
+                            HorizontalAlignment="Left"
+                            Content="edit" />
+                        <Button 
+                            DockPanel.Dock="Right"
+                            HorizontalAlignment="Right"
+                            Content="delete"
+                            Command="{Binding DeleteWorkoutCommand}"/>
+                    </DockPanel>
                 </StackPanel>
             </ScrollViewer>
         </Border>

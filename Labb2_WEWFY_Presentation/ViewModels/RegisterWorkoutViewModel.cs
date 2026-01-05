@@ -193,7 +193,23 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
             await db.SaveChangesAsync();
             CurrentWorkoutExercises.Clear();
-            ShowSuccesfulSave();          
+            ShowSuccesfulSave();
+        }
+        public void ResetForm()
+        {
+            ExerciseDuration = "00:00:00";
+
+            CurrentWorkoutExercises.Clear();
+
+            WaterBefore = 0;
+            WaterDuring = 0;
+            Fueling = false;
+
+            Notes = string.Empty;
+            ExperienceRating = 3;
+
+            SelectedWorkoutExercise = null;
+            IsMessageVisible = false;
         }
 
         public async void ShowSuccesfulSave()

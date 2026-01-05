@@ -6,6 +6,7 @@
              StartupUri="Windows\MainWindow.xaml">
     <Application.Resources>
         <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <conv:InverseBoolConverter x:Key="InverseBoolConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/Labb2_WEWFY_Presentation;component/Fonts/#Courier Prime"/>
         </Style>

@@ -13,6 +13,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     class PreviousWorkoutsViewModel : ViewModelBase
     {
+        public DelegateCommand DeleteWorkoutCommand { get; set; }
         public bool HaveSelectedWorkout => SelectedWorkout != null;
         private ObservableCollection<Workout> workouts;
         public ObservableCollection<Workout> Workouts 
@@ -34,12 +35,43 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 _selectedWorkout = value;
                 RaisePropertyChanged();
                 RaisePropertyChanged(nameof(HaveSelectedWorkout));
+                DeleteWorkoutCommand.RaiseCanExecuteChanged();
             }
         }
         public PreviousWorkoutsViewModel()
         {
-
+            DeleteWorkoutCommand = new DelegateCommand(DeleteWorkout, CanDeleteWorkout);
         }
+
+        private bool CanDeleteWorkout(object? arg)
+        {
+            return SelectedWorkout != null;
+        }
+
+        private void DeleteWorkout(object? obj)
+        {
+            _ = DeleteWorkoutAsync(obj);
+        }
+        private async Task DeleteWorkoutAsync(object? obj)
+        {
+
+            using var db = new WEWFYContext();
+
+            var workout = await db.Workouts
+                                  .Include(w => w.ExerciseLoggers)
+                                  .FirstOrDefaultAsync(w => w.Id == SelectedWorkout.Id);
+
+            if (workout == null)
+                return;
+            db.Workouts.Remove(workout);
+            await db.SaveChangesAsync();
+
+            Workouts.Remove(SelectedWorkout);
+
+            SelectedWorkout = null;
+        }
+
+
         public async Task OnNavigatedToAsync()
         {
             await LoadPreviousWorkoutsAsync();
