@@ -55,8 +55,13 @@ Fixa en CanAddExercise och CanAddWorkout i commandsen
 Fixa säkerheten med att spamma AddWorkout
 	Har löst det genom clickevent. Känns dock inte som en MVVM-vänlig lösning
 
+En knapp som lägger till testdata :)
+
+Aggregerad vy där man klickar i boxar vad som ska inkluderas
+	ex 
+		X Long run
+		x Fueling
+	ska ge alla pass som innehåller en long run och fueling är true
+
 Design
 	Knapparnas storlek och placering
-	Padding innan och efter texten
-	Redigera så details inte behövs scrollas om det är 3 exercises och 1 rad notes
-	
