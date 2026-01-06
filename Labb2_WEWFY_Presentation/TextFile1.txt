@@ -44,17 +44,11 @@ Vyer
 
 instruktioner
 
-
 Lägg till "Are you sure?" på deleteknappen
 
 Redigera tidigare workouts
 
-Fixa en CanAddExercise och CanAddWorkout i commandsen
-
 En knapp som lägger till testdata :)
-
-Design
-	Knapparnas storlek och placering
 	
 Total stats
 	Hitta ett sätt att visa totaler?
@@ -69,3 +63,7 @@ Fixa säkerheten med att spamma AddWorkout
 
 Total stats
 	Lite skum lösning för att bockarna inte ska va ibockade när man går in och ut ur vyn
+
+Register Workout
+	Måste det markeras vad som behövs för att knapparna ska aktiveras?
+	maxvärdet på duration?

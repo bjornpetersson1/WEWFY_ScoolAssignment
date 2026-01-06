@@ -25,14 +25,24 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public string ExerciseDuration
         {
             get => _exerciseDuration;
-            set { _exerciseDuration = value; RaisePropertyChanged(); }
+            set 
+            {
+                _exerciseDuration = value; 
+                RaisePropertyChanged();
+                AddExerciseCommand.RaiseCanExecuteChanged();
+            }
         }
 
         private ObservableCollection<ExerciseLoggerViewModel> _currentWorkoutExercises = new();
         public ObservableCollection<ExerciseLoggerViewModel> CurrentWorkoutExercises
         {
             get => _currentWorkoutExercises;
-            set { _currentWorkoutExercises = value; RaisePropertyChanged(); }
+            set 
+            { 
+                _currentWorkoutExercises = value; 
+                RaisePropertyChanged();
+                AddNewWorkoutCommand.RaiseCanExecuteChanged();
+            }
         }
 
         private ExerciseLoggerViewModel _selectedWorkoutExercise;
@@ -102,10 +112,11 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         }
         public RegisterWorkoutViewModel()
         {
-            AddNewWorkoutCommand = new DelegateCommand(AddNewWorkout);
-            AddExerciseCommand = new DelegateCommand(AddExercise);
+            AddNewWorkoutCommand = new DelegateCommand(AddNewWorkout, CanAddNewWorkout);
+            AddExerciseCommand = new DelegateCommand(AddExercise, CanAddExercise);
             RemoveExerciseCommand = new DelegateCommand(RemoveExercise, CanRemoveExercise);
         }
+
 
         private bool CanRemoveExercise(object? arg)
         {
@@ -121,6 +132,14 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             SelectedWorkoutExercise = null;
         }
 
+        private bool CanAddExercise(object? arg)
+        {
+            if (!TimeSpan.TryParse(ExerciseDuration, out var duration))
+                return false;
+
+
+            return duration.TotalDays < 1 && duration > TimeSpan.Zero;
+        }
         private async void AddExercise(object? obj)
         {
             if (string.IsNullOrWhiteSpace(SelectedExcersise))
@@ -147,8 +166,13 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             });
 
             ExerciseDuration = "00:00:00";
+            AddNewWorkoutCommand.RaiseCanExecuteChanged();
         }
 
+        private bool CanAddNewWorkout(object? arg)
+        {
+            return CurrentWorkoutExercises.Count != 0;
+        }
         private void AddNewWorkout(object? obj)
         {
             CreateNewWorkoutAsync();

@@ -32,7 +32,7 @@
                         Margin="10 0 0 5">
                 <TextBlock Text="duration (hh:mm:ss): " />
                 <TextBox 
-                    Text="{Binding ExerciseDuration}"
+                    Text="{Binding ExerciseDuration, UpdateSourceTrigger=PropertyChanged}"
                     Width="50"/>
             </StackPanel>
             <Button Content="add exercise" 
