@@ -11,6 +11,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public EditPreviousWorkoutView EditPreviousWorkoutView { get; }
         public InstructionsView InstructionsView { get; }
         public MenuView MenuView { get; }
         public PreviousWorkoutsView PreviousWorkoutsView { get; }
@@ -38,6 +39,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             PreviousWorkoutsView = new PreviousWorkoutsView(this);
             RegisterWorkoutView = new RegisterWorkoutView(this);
             TotalStatsView = new TotalStatsView(this);
+            EditPreviousWorkoutView = new EditPreviousWorkoutView(this);
             ChangeCurrentViewCommand = new DelegateCommand(ChangeCurrentView, CanChangeCurrentView);
             CurrentView = MenuView;
         }

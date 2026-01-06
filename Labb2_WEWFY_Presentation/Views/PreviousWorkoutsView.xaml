@@ -129,13 +129,15 @@
                     </TextBlock>
                     <TextBlock Text="{Binding Notes, StringFormat=Notes: {0}}"
                         TextWrapping="Wrap"/>
-                    <DockPanel Margin="0 10 0 0"
-                               DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                    <DockPanel Margin="0 10 0 0">
                         <Button 
                             DockPanel.Dock="Left"
                             HorizontalAlignment="Left"
-                            Content="edit" />
+                            Content="edit"
+                            Command="{Binding MainVM.ChangeCurrentViewCommand}"
+                            CommandParameter="{Binding MainVM.EditPreviousWorkoutView}"/>
                         <Button 
+                            DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             DockPanel.Dock="Right"
                             HorizontalAlignment="Right"
                             Content="delete"

@@ -47,6 +47,8 @@ instruktioner
 Lägg till "Are you sure?" på deleteknappen
 
 Redigera tidigare workouts
+	lös binding och inladdning av data till edit-viewn
+	OCH byta vy, det är tydligen skitjobbigt
 
 En knapp som lägger till testdata :)
 	
