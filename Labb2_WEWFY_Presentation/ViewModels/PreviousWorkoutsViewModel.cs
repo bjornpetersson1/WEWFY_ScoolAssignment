@@ -1,6 +1,7 @@
 ﻿using Labb2_WEWFY_Domain;
 using Labb2_WEWFY_Infrastructure.Data.Model;
 using Labb2_WEWFY_Presentation.Commands;
+using Labb2_WEWFY_Presentation.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -38,9 +39,12 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 DeleteWorkoutCommand.RaiseCanExecuteChanged();
             }
         }
+
+        private readonly LoadPreviousWorkoutsService _LoadPreviousWorkoutsService;
         public PreviousWorkoutsViewModel()
         {
             DeleteWorkoutCommand = new DelegateCommand(DeleteWorkout, CanDeleteWorkout);
+            _LoadPreviousWorkoutsService = new LoadPreviousWorkoutsService();
         }
 
         private bool CanDeleteWorkout(object? arg)
@@ -72,18 +76,15 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         }
 
 
-        public async Task OnNavigatedToAsync()
-        {
-            await LoadPreviousWorkoutsAsync();
-        }
+        //public async Task OnNavigatedToAsync()
+        //{
+        //    await LoadPreviousWorkoutsAsync();
+        //}
 
         public async Task LoadPreviousWorkoutsAsync()
         {
-            using var db = new WEWFYContext();
-            Workouts = new ObservableCollection<Workout>(await db.Workouts
-                                                                .Include(w => w.ExerciseLoggers)
-                                                                .ThenInclude(el => el.Exercise)
-                                                                .ToListAsync());
+            var workouts = await _LoadPreviousWorkoutsService.GetPreviousWorkoutsAsync();
+            Workouts = new ObservableCollection<Workout>(workouts);
         }
     }
 }

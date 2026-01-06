@@ -5,8 +5,103 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Labb2_WEWFY_Presentation.Views"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="300" d:Background="White">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0">
+            <DockPanel>
+                <CheckBox 
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="warm up"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox 
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="cool down"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="intervals"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="long run"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="race pace"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="fueling"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="water before"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="water during"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+        </StackPanel>
+        <DataGrid x:Name="myTotalStatsGrid" 
+                  Grid.Row="1"
+                  Grid.ColumnSpan="4"
+                  Margin="0 0 0 0"
+                  AutoGenerateColumns="True"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="False"
+                  CanUserResizeRows="False"
+                  CanUserResizeColumns="False"
+                  CanUserSortColumns="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  RowHeaderWidth="0"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Auto"
+                  AlternationCount="2"
+                  RowBackground="WhiteSmoke"
+                  AlternatingRowBackground="White" 
+                  ItemsSource="{Binding Workouts}"
+                  SelectedItem="{}"
+                  > 
+            <DataGrid.Columns>
+                
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

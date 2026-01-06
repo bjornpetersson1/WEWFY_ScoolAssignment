@@ -44,7 +44,6 @@ Vyer
 
 instruktioner
 
-Total stats :)
 
 Lägg till "Are you sure?" på deleteknappen
 
@@ -57,11 +56,15 @@ Fixa säkerheten med att spamma AddWorkout
 
 En knapp som lägger till testdata :)
 
+Total stats :)
 Aggregerad vy där man klickar i boxar vad som ska inkluderas
 	ex 
 		X Long run
 		x Fueling
 	ska ge alla pass som innehåller en long run och fueling är true
+	samt samlad statistik för alla dom 
+		
+			Ev ny loadfunktion, får du med allt?
 
 Design
 	Knapparnas storlek och placering
