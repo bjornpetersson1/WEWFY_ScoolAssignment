@@ -26,11 +26,13 @@ namespace Labb2_WEWFY_Presentation.Views
         {
             InitializeComponent();
             MainVM = mainVM;
-            DataContext = new TotalStatsViewModel();
+            //DataContext = new TotalStatsViewModel();
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            DataContext = new TotalStatsViewModel();
+
             if (DataContext is TotalStatsViewModel vm)
             {
                 await vm.LoadPreviousWorkoutsAsync();

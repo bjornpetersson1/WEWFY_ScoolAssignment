@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="300" d:Background="White">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />
@@ -19,8 +19,14 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0">
+            <TextBlock 
+                Text="include" 
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="13"/>
             <DockPanel>
                 <CheckBox 
+                    IsChecked="{Binding FilterWarmUp, Mode=TwoWay}"
                     DockPanel.Dock="Right"/>
                 <TextBlock 
                     Text="warm up"
@@ -28,6 +34,7 @@
             </DockPanel>
             <DockPanel>
                 <CheckBox 
+                    IsChecked="{Binding FilterCoolDown}"
                     DockPanel.Dock="Right"/>
                 <TextBlock 
                     Text="cool down"
@@ -35,6 +42,7 @@
             </DockPanel>
             <DockPanel>
                 <CheckBox
+                    IsChecked="{Binding FilterIntervals}"
                     DockPanel.Dock="Right"/>
                 <TextBlock 
                     Text="intervals"
@@ -42,6 +50,7 @@
             </DockPanel>
             <DockPanel>
                 <CheckBox
+                    IsChecked="{Binding FilterLongRun}"
                     DockPanel.Dock="Right"/>
                 <TextBlock 
                     Text="long run"
@@ -49,6 +58,7 @@
             </DockPanel>
             <DockPanel>
                 <CheckBox
+                    IsChecked="{Binding FilterRacePace}"
                     DockPanel.Dock="Right"/>
                 <TextBlock 
                     Text="race pace"
@@ -56,6 +66,56 @@
             </DockPanel>
             <DockPanel>
                 <CheckBox
+                    IsChecked="{Binding FilterRatedOne}"
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="rated 1"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    IsChecked="{Binding FilterRatedTwo}"
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="rated 2"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    IsChecked="{Binding FilterRatedThree}"
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="rated 3"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    IsChecked="{Binding FilterRatedFour}"
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="rated 4"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox
+                    IsChecked="{Binding FilterRatedFive}"
+                    DockPanel.Dock="Right"/>
+                <TextBlock 
+                    Text="rated 5"
+                    DockPanel.Dock="Left"/>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel 
+            Grid.Row="0"
+            Grid.Column="2">
+            <TextBlock 
+                Text="filter" 
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="13"/>
+            <DockPanel>
+                <CheckBox
+                    IsChecked="{Binding FilterFueling}"
                     DockPanel.Dock="Right"/>
                 <TextBlock 
                     Text="fueling"
@@ -63,6 +123,7 @@
             </DockPanel>
             <DockPanel>
                 <CheckBox
+                    IsChecked="{Binding FilterWaterBefore}"
                     DockPanel.Dock="Right"/>
                 <TextBlock 
                     Text="water before"
@@ -70,6 +131,7 @@
             </DockPanel>
             <DockPanel>
                 <CheckBox
+                    IsChecked="{Binding FilterWaterDuring}"
                     DockPanel.Dock="Right"/>
                 <TextBlock 
                     Text="water during"
@@ -96,7 +158,7 @@
                   AlternationCount="2"
                   RowBackground="WhiteSmoke"
                   AlternatingRowBackground="White" 
-                  ItemsSource="{Binding Workouts}"
+                  ItemsSource="{Binding FilteredWorkoutRows}"
                   SelectedItem="{}"
                   > 
             <DataGrid.Columns>

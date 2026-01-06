@@ -51,20 +51,21 @@ Redigera tidigare workouts
 
 Fixa en CanAddExercise och CanAddWorkout i commandsen
 
-Fixa säkerheten med att spamma AddWorkout
-	Har löst det genom clickevent. Känns dock inte som en MVVM-vänlig lösning
-
 En knapp som lägger till testdata :)
-
-Total stats :)
-Aggregerad vy där man klickar i boxar vad som ska inkluderas
-	ex 
-		X Long run
-		x Fueling
-	ska ge alla pass som innehåller en long run och fueling är true
-	samt samlad statistik för alla dom 
-		
-			Ev ny loadfunktion, får du med allt?
 
 Design
 	Knapparnas storlek och placering
+	
+Total stats
+	Hitta ett sätt att visa totaler?
+	Fixa vad och hur det visas i datagriden
+	Bättre namn på rubrikerna?
+	Nu visas varje övning som en rad så varje workout får många rader, hitta ett snyggare sätt att visa det
+
+
+		--Fråga Fredrik--
+Fixa säkerheten med att spamma AddWorkout
+	Har löst det genom clickevent. Känns dock inte som en MVVM-vänlig lösning
+
+Total stats
+	Lite skum lösning för att bockarna inte ska va ibockade när man går in och ut ur vyn
