@@ -24,14 +24,14 @@
                         Margin="10 0 0 0">
                 <TextBlock Text="choose exercise: " />
                 <ComboBox 
-                    ItemsSource="{Binding Exercises}"
-                    SelectedItem="{Binding SelectedExcersise}"/>
+                    ItemsSource="{Binding RegisterVM.Exercises}"
+                    SelectedItem="{Binding RegisterVM.SelectedExcersise}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 5">
                 <TextBlock Text="duration (hh:mm:ss): " />
                 <TextBox 
-                    Text="{Binding ExerciseDuration, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding RegisterVM.ExerciseDuration, UpdateSourceTrigger=PropertyChanged}"
                     Width="50"/>
             </StackPanel>
             <Button Content="add exercise" 
@@ -64,13 +64,13 @@
                       AlternationCount="2"
                       RowBackground="WhiteSmoke"
                       AlternatingRowBackground="White" 
-                      ItemsSource="{Binding CurrentWorkoutExercises}"
-                      SelectedItem="{Binding SelectedWorkoutExercise}"
+                      ItemsSource="{Binding PreviousVM.SelectedWorkout.ExerciseLoggers}"
+                      SelectedItem="{Binding PreviousVM.SelectedWorkoutExercise}"
                       >
                 <DataGrid.Columns>
                     <DataGridTextColumn 
                         Header="Exercise" 
-                        Binding="{Binding ExerciseName}" 
+                        Binding="{Binding Exercise.ExerciseName}" 
                         Width="*"/>
                     <DataGridTextColumn 
                         Header="Duration" 
@@ -88,35 +88,35 @@
             <StackPanel Orientation="Horizontal"
                         Margin="10 10 0 0">
                 <TextBlock Text="water before workout (ml): " />
-                <TextBox Text="{Binding WaterBefore, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding PreviousVM.SelectedWorkout.WaterBefore, UpdateSourceTrigger=PropertyChanged}"
                          Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
                 <TextBlock Text="water during workout (ml): " />
-                <TextBox Text="{Binding WaterDuring, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding PreviousVM.SelectedWorkout.WaterDuring, UpdateSourceTrigger=PropertyChanged}"
                          Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
                 <TextBlock Text="fueling during workout? " />
                 <RadioButton Content="Yes" 
-                             IsChecked="{Binding Fueling, Mode=TwoWay}"/>
+                             IsChecked="{Binding PreviousVM.SelectedWorkout.Fueling, Mode=TwoWay}"/>
                 <RadioButton Content="No" 
-                             IsChecked="{Binding Fueling, 
+                             IsChecked="{Binding PreviousVM.SelectedWorkout.Fueling, 
                                          Mode=TwoWay,
                                          Converter={StaticResource InverseBoolConverter}}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
                 <TextBlock Text="notes: " />
-                <TextBox Text="{Binding Notes}"
+                <TextBox Text="{Binding PreviousVM.SelectedWorkout.Notes}"
                          Width="179"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 5">
                 <TextBlock Text="experience: " />
-                <ComboBox   SelectedValue="{Binding ExperienceRating}"
+                <ComboBox   SelectedValue="{Binding PreviousVM.SelectedWorkout.ExperienceRating}"
                             SelectedValuePath="Content">
                     <ComboBoxItem Content="1" />
                     <ComboBoxItem Content="2" />

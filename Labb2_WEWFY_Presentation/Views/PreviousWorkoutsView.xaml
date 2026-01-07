@@ -97,7 +97,7 @@
                             <DataTemplate>
                                 <DockPanel>
 
-                                    <TextBlock Text="{Binding SelectedWorkout.Exercise.ExerciseName}"
+                                    <TextBlock Text="{Binding Exercise.ExerciseName}"
                                         Margin="20 0 0 0"
                                         Width="100"/>
 

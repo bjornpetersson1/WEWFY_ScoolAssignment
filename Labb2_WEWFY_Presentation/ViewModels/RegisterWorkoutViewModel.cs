@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace Labb2_WEWFY_Presentation.ViewModels
 {
-    class RegisterWorkoutViewModel : ViewModelBase
+    public class RegisterWorkoutViewModel : ViewModelBase
     {
         public DelegateCommand AddNewWorkoutCommand { get; set; }
         public DelegateCommand AddExerciseCommand { get; set; }

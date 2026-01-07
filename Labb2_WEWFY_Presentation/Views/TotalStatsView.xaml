@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="300" d:Background="White">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
-            <RowDefinition Height="7*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="9*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />
@@ -24,6 +24,7 @@
                 HorizontalAlignment="Center"
                 FontWeight="Bold"
                 FontSize="13"/>
+            <Separator Margin="0,1"/>
             <DockPanel>
                 <CheckBox 
                     IsChecked="{Binding FilterWarmUp, Mode=TwoWay}"
@@ -64,6 +65,7 @@
                     Text="race pace"
                     DockPanel.Dock="Left"/>
             </DockPanel>
+            <Separator Margin="0,1"/>
             <DockPanel>
                 <CheckBox
                     IsChecked="{Binding FilterRatedOne}"
@@ -104,6 +106,7 @@
                     Text="rated 5"
                     DockPanel.Dock="Left"/>
             </DockPanel>
+            <Separator Margin="0,1"/>
         </StackPanel>
         <StackPanel 
             Grid.Row="0"
@@ -113,6 +116,7 @@
                 HorizontalAlignment="Center"
                 FontWeight="Bold"
                 FontSize="13"/>
+            <Separator Margin="0,1"/>
             <DockPanel>
                 <CheckBox
                     IsChecked="{Binding FilterFueling}"
@@ -137,6 +141,7 @@
                     Text="water during"
                     DockPanel.Dock="Left"/>
             </DockPanel>
+            <Separator Margin="0,1"/>
         </StackPanel>
         <DataGrid x:Name="myTotalStatsGrid" 
                   Grid.Row="1"

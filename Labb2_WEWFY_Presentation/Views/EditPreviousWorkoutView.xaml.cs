@@ -22,11 +22,14 @@ namespace Labb2_WEWFY_Presentation.Views
     public partial class EditPreviousWorkoutView : UserControl
     {
         public MainWindowViewModel MainVM { get; }
-        public EditPreviousWorkoutView(MainWindowViewModel mainVM)
+        public EditPreviousWorkoutView(
+        MainWindowViewModel mainVM,
+        PreviousWorkoutsViewModel prevVM,
+        RegisterWorkoutViewModel regVM)
         {
             InitializeComponent();
             MainVM = mainVM;
-            DataContext = this;
+            DataContext = new EditPreviousWorkoutWrapper(prevVM, regVM);
         }
     }
 }

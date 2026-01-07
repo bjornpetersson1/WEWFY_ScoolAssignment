@@ -39,5 +39,10 @@ namespace Labb2_WEWFY_Presentation.Windows
                 DragMove();
             }
         }
+
+        private void Button_minimize(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
     }
 }

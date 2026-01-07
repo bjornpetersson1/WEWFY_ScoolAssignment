@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Labb2_WEWFY_Presentation.ViewModels
 {
-    class PreviousWorkoutsViewModel : ViewModelBase
+    public class PreviousWorkoutsViewModel : ViewModelBase
     {
         public DelegateCommand DeleteWorkoutCommand { get; set; }
         public bool HaveSelectedWorkout => SelectedWorkout != null;

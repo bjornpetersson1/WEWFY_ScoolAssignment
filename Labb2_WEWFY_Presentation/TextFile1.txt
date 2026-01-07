@@ -50,7 +50,11 @@ Redigera tidigare workouts
 	lös binding och inladdning av data till edit-viewn
 
 En knapp som lägger till testdata :)
+
+Register workout-knappen CanExecute har buggat ut
 	
+Minimera-knapp
+
 Total stats
 	Hitta ett sätt att visa totaler?
 	Fixa vad och hur det visas i datagriden
@@ -64,7 +68,9 @@ Fixa säkerheten med att spamma AddWorkout
 
 Total stats
 	Lite skum lösning för att bockarna inte ska va ibockade när man går in och ut ur vyn
+		gör ny instans av vyn när man växlar till vyn
 
 Register Workout
 	Måste det markeras vad som behövs för att knapparna ska aktiveras?
 	maxvärdet på duration?
+		ToolTip

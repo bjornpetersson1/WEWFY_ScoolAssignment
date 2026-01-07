@@ -25,6 +25,11 @@
                     Click="Button_Quit"
                     DockPanel.Dock="Right"
                     />
+            <Button 
+                Content="minimize"
+                Margin="0 0 5 0"
+                Click="Button_minimize"
+                DockPanel.Dock="Right"/>
         </DockPanel>
         <Grid Grid.Row="1"
               Background="#e8cccc">

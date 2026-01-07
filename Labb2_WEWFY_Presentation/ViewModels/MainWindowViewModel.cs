@@ -11,6 +11,9 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public RegisterWorkoutViewModel RegisterWorkoutVM { get; set; }
+        public PreviousWorkoutsViewModel PreviousWorkoutsVM { get; set; }
+        public EditPreviousWorkoutWrapper EditPreviousWrapper { get; set; }
         public EditPreviousWorkoutView EditPreviousWorkoutView { get; }
         public InstructionsView InstructionsView { get; }
         public MenuView MenuView { get; }
@@ -34,12 +37,15 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
         public MainWindowViewModel()
         {
+            PreviousWorkoutsVM = new PreviousWorkoutsViewModel(this);
+            RegisterWorkoutVM = new RegisterWorkoutViewModel();
+            EditPreviousWrapper = new EditPreviousWorkoutWrapper(PreviousWorkoutsVM, RegisterWorkoutVM);
             InstructionsView = new InstructionsView(this);
             MenuView = new MenuView(this);
-            PreviousWorkoutsView = new PreviousWorkoutsView(this);
-            RegisterWorkoutView = new RegisterWorkoutView(this);
+            PreviousWorkoutsView = new PreviousWorkoutsView(this, PreviousWorkoutsVM);
+            RegisterWorkoutView = new RegisterWorkoutView(this, RegisterWorkoutVM);
             TotalStatsView = new TotalStatsView(this);
-            EditPreviousWorkoutView = new EditPreviousWorkoutView(this);
+            EditPreviousWorkoutView = new EditPreviousWorkoutView(this, PreviousWorkoutsVM, RegisterWorkoutVM);
             ChangeCurrentViewCommand = new DelegateCommand(ChangeCurrentView, CanChangeCurrentView);
             CurrentView = MenuView;
         }
