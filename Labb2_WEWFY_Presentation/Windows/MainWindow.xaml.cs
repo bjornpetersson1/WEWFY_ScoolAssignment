@@ -31,5 +31,13 @@ namespace Labb2_WEWFY_Presentation.Windows
         {
             Application.Current.Shutdown();
         }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }
