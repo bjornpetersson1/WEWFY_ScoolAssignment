@@ -41,10 +41,12 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         }
 
         private readonly LoadPreviousWorkoutsService _LoadPreviousWorkoutsService;
-        public PreviousWorkoutsViewModel()
+        public MainWindowViewModel MainVM { get; }
+        public PreviousWorkoutsViewModel(MainWindowViewModel mainWindow)
         {
             DeleteWorkoutCommand = new DelegateCommand(DeleteWorkout, CanDeleteWorkout);
             _LoadPreviousWorkoutsService = new LoadPreviousWorkoutsService();
+            MainVM = mainWindow;
         }
 
         private bool CanDeleteWorkout(object? arg)

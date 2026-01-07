@@ -82,7 +82,7 @@
             <ScrollViewer
                 VerticalScrollBarVisibility="Auto"
                 HorizontalScrollBarVisibility="Disabled">
-                <StackPanel DataContext="{Binding SelectedWorkout}">
+                <StackPanel>
                     <TextBlock 
                         Text="details"
                         HorizontalAlignment="Center"
@@ -90,36 +90,36 @@
                         FontSize="13"
                         Margin="0 0 0 8"/>
 
-                    <TextBlock Text="{Binding LoggingDate, StringFormat=Date: {0:yyyy-MM-dd}}" />
-                    <TextBlock Text="{Binding NumOfExercises, StringFormat=Number of exercises: {0}}" />
-                    <ItemsControl ItemsSource="{Binding ExerciseLoggers}">
+                    <TextBlock Text="{Binding SelectedWorkout.LoggingDate, StringFormat=Date: {0:yyyy-MM-dd}}" />
+                    <TextBlock Text="{Binding SelectedWorkout.NumOfExercises, StringFormat=Number of exercises: {0}}" />
+                    <ItemsControl ItemsSource="{Binding SelectedWorkout.ExerciseLoggers}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <DockPanel>
 
-                                    <TextBlock Text="{Binding Exercise.ExerciseName}"
+                                    <TextBlock Text="{Binding SelectedWorkout.Exercise.ExerciseName}"
                                         Margin="20 0 0 0"
                                         Width="100"/>
 
-                                    <TextBlock Text="{Binding Duration, StringFormat={}{0:hh\\:mm\\:ss}}"
+                                    <TextBlock Text="{Binding SelectedWorkout.Duration, StringFormat={}{0:hh\\:mm\\:ss}}"
                                         HorizontalAlignment="Left"/>
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <TextBlock Text="{Binding TotalDuration, StringFormat=Duration: {0:hh\\:mm\\:ss}}" />
-                    <TextBlock Text="{Binding ExperienceRating, StringFormat=Rating: {0}}" />
-                    <TextBlock Text="{Binding WaterBefore, StringFormat=Water before: {0} ml}" />
-                    <TextBlock Text="{Binding WaterDuring, StringFormat=Water during: {0} ml}" />
+                    <TextBlock Text="{Binding SelectedWorkout.TotalDuration, StringFormat=Duration: {0:hh\\:mm\\:ss}}" />
+                    <TextBlock Text="{Binding SelectedWorkout.ExperienceRating, StringFormat=Rating: {0}}" />
+                    <TextBlock Text="{Binding SelectedWorkout.WaterBefore, StringFormat=Water before: {0} ml}" />
+                    <TextBlock Text="{Binding SelectedWorkout.WaterDuring, StringFormat=Water during: {0} ml}" />
                     <TextBlock>
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Fueling}" Value="True">
+                                    <DataTrigger Binding="{Binding SelectedWorkout.Fueling}" Value="True">
                                         <Setter Property="Text" Value="Fueling: Yes"/>
                                         <Setter Property="FontFamily" Value="pack://application:,,,/Labb2_WEWFY_Presentation;component/Fonts/#Courier Prime" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding Fueling}" Value="False">
+                                    <DataTrigger Binding="{Binding SelectedWorkout.Fueling}" Value="False">
                                         <Setter Property="Text" Value="Fueling: No"/>
                                         <Setter Property="FontFamily" Value="pack://application:,,,/Labb2_WEWFY_Presentation;component/Fonts/#Courier Prime" />
                                     </DataTrigger>

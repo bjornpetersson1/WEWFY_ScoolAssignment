@@ -26,7 +26,7 @@ namespace Labb2_WEWFY_Presentation.Views
         {
             MainVM = mainVM;
             InitializeComponent();
-            DataContext = new PreviousWorkoutsViewModel();
+            DataContext = new PreviousWorkoutsViewModel(mainVM);
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
