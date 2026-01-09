@@ -130,6 +130,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
             CurrentWorkoutExercises.Remove(SelectedWorkoutExercise);
             SelectedWorkoutExercise = null;
+            AddNewWorkoutCommand.RaiseCanExecuteChanged();
         }
 
         private bool CanAddExercise(object? arg)
@@ -234,6 +235,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
             SelectedWorkoutExercise = null;
             IsMessageVisible = false;
+            AddNewWorkoutCommand.RaiseCanExecuteChanged();
         }
 
         public async void ShowSuccesfulSave()
