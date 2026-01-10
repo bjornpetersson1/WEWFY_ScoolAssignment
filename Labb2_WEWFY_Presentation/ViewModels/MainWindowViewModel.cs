@@ -14,7 +14,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public RegisterWorkoutViewModel RegisterWorkoutVM { get; set; }
         public PreviousWorkoutsViewModel PreviousWorkoutsVM { get; set; }
         public EditPreviousWorkoutWrapper EditPreviousWrapper { get; set; }
-        public EditPreviousWorkoutView EditPreviousWorkoutView { get; }
+        public EditPreviousWorkoutView EditPreviousWorkoutView { get; set; }
         public InstructionsView InstructionsView { get; }
         public MenuView MenuView { get; }
         public PreviousWorkoutsView PreviousWorkoutsView { get; }
@@ -59,6 +59,12 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         {
             if (obj is UserControl view)
             {
+                //if(view is EditPreviousWorkoutView)
+                //{
+                //    EditPreviousWorkoutView = new EditPreviousWorkoutView(this, PreviousWorkoutsVM, RegisterWorkoutVM);
+                //    view = EditPreviousWorkoutView;
+                //    CurrentView = view;
+                //}
                 CurrentView = view;
             }
         }

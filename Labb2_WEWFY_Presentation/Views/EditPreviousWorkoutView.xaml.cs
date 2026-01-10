@@ -22,6 +22,7 @@ namespace Labb2_WEWFY_Presentation.Views
     public partial class EditPreviousWorkoutView : UserControl
     {
         public MainWindowViewModel MainVM { get; }
+        public EditPreviousWorkoutViewModel EditPreviousVM { get; set; }
         public EditPreviousWorkoutView(
         MainWindowViewModel mainVM,
         PreviousWorkoutsViewModel prevVM,
@@ -29,7 +30,13 @@ namespace Labb2_WEWFY_Presentation.Views
         {
             InitializeComponent();
             MainVM = mainVM;
-            DataContext = new EditPreviousWorkoutWrapper(prevVM, regVM);
+            EditPreviousVM = new EditPreviousWorkoutViewModel(prevVM, regVM);
+            DataContext = EditPreviousVM;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            EditPreviousVM.LoadSelectedWorkoutData();
         }
     }
 }

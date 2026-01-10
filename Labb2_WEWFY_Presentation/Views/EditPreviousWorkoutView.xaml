@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Labb2_WEWFY_Presentation.Views"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
@@ -35,7 +36,7 @@
                     Width="50"/>
             </StackPanel>
             <Button Content="add exercise" 
-                    Command="{Binding AddExerciseCommand}"
+                    Command="{Binding RegisterVM.AddExerciseCommand}"
                     Width="165"/>
         </StackPanel>
 
@@ -64,7 +65,7 @@
                       AlternationCount="2"
                       RowBackground="WhiteSmoke"
                       AlternatingRowBackground="White" 
-                      ItemsSource="{Binding PreviousVM.SelectedWorkout.ExerciseLoggers}"
+                      ItemsSource="{Binding CurrentExercises}"
                       SelectedItem="{Binding PreviousVM.SelectedWorkoutExercise}"
                       >
                 <DataGrid.Columns>
@@ -79,7 +80,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button Content="remove exercise" 
-                    Command="{Binding RemoveExerciseCommand}"
+                    Command="{Binding RegisterVM.RemoveExerciseCommand}"
                     HorizontalAlignment="Center"
                     Width="165"/>
         </StackPanel>
@@ -88,35 +89,35 @@
             <StackPanel Orientation="Horizontal"
                         Margin="10 10 0 0">
                 <TextBlock Text="water before workout (ml): " />
-                <TextBox Text="{Binding PreviousVM.SelectedWorkout.WaterBefore, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding WaterBefore, UpdateSourceTrigger=PropertyChanged}"
                          Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
                 <TextBlock Text="water during workout (ml): " />
-                <TextBox Text="{Binding PreviousVM.SelectedWorkout.WaterDuring, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Text="{Binding WaterDuring, UpdateSourceTrigger=PropertyChanged}"
                          Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
                 <TextBlock Text="fueling during workout? " />
                 <RadioButton Content="Yes" 
-                             IsChecked="{Binding PreviousVM.SelectedWorkout.Fueling, Mode=TwoWay}"/>
+                             IsChecked="{Binding Fueling, Mode=TwoWay}"/>
                 <RadioButton Content="No" 
-                             IsChecked="{Binding PreviousVM.SelectedWorkout.Fueling, 
+                             IsChecked="{Binding Fueling, 
                                          Mode=TwoWay,
                                          Converter={StaticResource InverseBoolConverter}}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
                 <TextBlock Text="notes: " />
-                <TextBox Text="{Binding PreviousVM.SelectedWorkout.Notes}"
+                <TextBox Text="{Binding Notes}"
                          Width="179"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 5">
                 <TextBlock Text="experience: " />
-                <ComboBox   SelectedValue="{Binding PreviousVM.SelectedWorkout.ExperienceRating}"
+                <ComboBox   SelectedValue="{Binding ExperienceRating}"
                             SelectedValuePath="Content">
                     <ComboBoxItem Content="1" />
                     <ComboBoxItem Content="2" />
@@ -128,7 +129,7 @@
 
             <Button 
                 Content="save workout" 
-                    Command="{Binding AddNewWorkoutCommand}"
+                    Command="{Binding UpdateWorkoutCommand}"
                     Margin="5 0 5 5"/>
             <TextBlock 
                 HorizontalAlignment="Center"
@@ -136,7 +137,7 @@
                 FontSize="15"
                 Text="workout saved successfully"
                 Foreground="#e89797"       
-                Visibility="{Binding IsMessageVisible,
+                Visibility="{Binding RegisterVM.IsMessageVisible,
                              Converter={StaticResource BoolToVisibilityConverter}}"/>
         </StackPanel>
     </Grid>
