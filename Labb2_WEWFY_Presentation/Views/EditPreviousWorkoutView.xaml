@@ -56,7 +56,7 @@
                       CanUserReorderColumns="False"
                       CanUserResizeRows="False"
                       CanUserResizeColumns="False"
-                      CanUserSortColumns="True"
+                      CanUserSortColumns="False"
                       SelectionMode="Single"
                       SelectionUnit="FullRow"
                       RowHeaderWidth="0"
