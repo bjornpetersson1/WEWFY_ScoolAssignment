@@ -46,12 +46,6 @@ instruktioner
 
 Lägg till "Are you sure?" på deleteknappen
 
-Redigera tidigare workouts
-	RemoveExerciseCommand
-		RemoveExercise
-		CanRemoveExercise
-	CanSaveWorkout
-
 En knapp som lägger till testdata :)
 	
 Total stats
@@ -59,6 +53,8 @@ Total stats
 	Fixa vad och hur det visas i datagriden
 	Bättre namn på rubrikerna?
 	Nu visas varje övning som en rad så varje workout får många rader, hitta ett snyggare sätt att visa det
+		Om man klickar i betyg 5 ska det visas cirkeldiagram på hur många av workoutsen som innehöll varje parameter som inte är iklickad
+			betyg 5 & long run ska ge diagram på dom andra träningsformerna och fueling och vatten
 
 
 		--Fråga Fredrik--
