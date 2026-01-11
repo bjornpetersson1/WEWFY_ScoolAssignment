@@ -23,21 +23,21 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             {
                 _exerciseDuration = value;
                 RaisePropertyChanged();
-                //AddExerciseCommand.RaiseCanExecuteChanged();
+                AddExerciseCommand.RaiseCanExecuteChanged();
             }
         }
 
-        private ObservableCollection<ExerciseLoggerViewModel> _currentWorkoutExercises = new();
-        public ObservableCollection<ExerciseLoggerViewModel> CurrentWorkoutExercises
-        {
-            get => _currentWorkoutExercises;
-            set
-            {
-                _currentWorkoutExercises = value;
-                RaisePropertyChanged();
-                //AddNewWorkoutCommand.RaiseCanExecuteChanged();
-            }
-        }
+        //private ObservableCollection<ExerciseLoggerViewModel> _currentWorkoutExercises = new();
+        //public ObservableCollection<ExerciseLoggerViewModel> CurrentWorkoutExercises
+        //{
+        //    get => _currentWorkoutExercises;
+        //    set
+        //    {
+        //        _currentWorkoutExercises = value;
+        //        RaisePropertyChanged();
+        //        //AddNewWorkoutCommand.RaiseCanExecuteChanged();
+        //    }
+        //}
 
         private ExerciseLoggerViewModel _selectedWorkoutExercise;
         public ExerciseLoggerViewModel SelectedWorkoutExercise
@@ -115,16 +115,63 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public PreviousWorkoutsViewModel PreviousWorkoutsVM { get; set; }
         public RegisterWorkoutViewModel RegisterVM { get; set; }
         public DelegateCommand UpdateWorkoutCommand { get; set; }
+        public DelegateCommand AddExerciseCommand { get; set; }
         public EditPreviousWorkoutViewModel(PreviousWorkoutsViewModel PreVM, RegisterWorkoutViewModel RegVM)
         {
             PreviousWorkoutsVM = PreVM;
             RegisterVM = RegVM;
-            UpdateWorkoutCommand = new DelegateCommand(UpdateWorkout);
+            UpdateWorkoutCommand = new DelegateCommand(UpdateWorkout, CanUpdateWorkout);
+            AddExerciseCommand = new DelegateCommand(AddExercise, CanAddExercise);
+        }
+
+        private bool CanUpdateWorkout(object? arg)
+        {
+            return CurrentExercises.Count != 0;
         }
 
         private void UpdateWorkout(object? obj)
         {
             EditWorkoutAsync();
+        }
+        private bool CanAddExercise(object? arg)
+        {
+            if (!TimeSpan.TryParse(ExerciseDuration, out var duration))
+                return false;
+
+
+            return duration.TotalDays < 1 && duration > TimeSpan.Zero;
+        }
+        private async void AddExercise(object? obj)
+        {
+            if (string.IsNullOrWhiteSpace(SelectedExcersise))
+                return;
+
+            if (!TimeSpan.TryParse(ExerciseDuration, out var duration))
+                return;
+
+            using var db = new WEWFYContext();
+
+            //var exercise = await db.Exercises
+            //    .Where(e => e.ExerciseName == SelectedExcersise)
+            //    .Select(e => new { e.Id, e.ExerciseName })
+            //    .FirstOrDefaultAsync();
+            var exercise = await db.Exercises
+                .FirstOrDefaultAsync(e => e.ExerciseName == SelectedExcersise);
+
+
+            if (exercise == null)
+                return;
+
+            CurrentExercises.Add(new ExerciseLogger
+            {
+                ExerciseId = exercise.Id,
+                Exercise = exercise,
+                Duration = duration
+            });
+
+            ExerciseDuration = "00:00:00";
+            
+            //AddNewWorkoutCommand.RaiseCanExecuteChanged();
         }
 
         public async Task LoadSelectedWorkoutData()
@@ -135,7 +182,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             WaterDuring = PreviousWorkoutsVM.SelectedWorkout.WaterDuring;
             WaterBefore = PreviousWorkoutsVM.SelectedWorkout.WaterBefore;
             CurrentExercises = new ObservableCollection<ExerciseLogger>(PreviousWorkoutsVM.SelectedWorkout.ExerciseLoggers);
-            await RegisterVM.LoadExcersisesAsync();
+            Exercises = await RegisterVM.LoadExercisesAsync();
+            SelectedExcersise = Exercises.FirstOrDefault();
         }
 
         private async Task EditWorkoutAsync()
@@ -160,7 +208,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
             db.ExerciseLoggers.RemoveRange(workout.ExerciseLoggers);
 
-            foreach (var vm in PreviousWorkoutsVM.SelectedWorkout.ExerciseLoggers)
+            foreach (var vm in CurrentExercises)
             {
                 workout.ExerciseLoggers.Add(new ExerciseLogger
                 {
@@ -172,6 +220,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
 
             await db.SaveChangesAsync();
+            CurrentExercises.Clear();
+            RegisterVM.ShowSuccesfulSave();
 
         }
     }

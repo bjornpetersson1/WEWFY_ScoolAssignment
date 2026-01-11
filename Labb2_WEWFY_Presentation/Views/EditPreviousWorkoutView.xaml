@@ -25,18 +25,18 @@
                         Margin="10 0 0 0">
                 <TextBlock Text="choose exercise: " />
                 <ComboBox 
-                    ItemsSource="{Binding RegisterVM.Exercises}"
-                    SelectedItem="{Binding RegisterVM.SelectedExcersise}"/>
+                    ItemsSource="{Binding Exercises}"
+                    SelectedItem="{Binding SelectedExcersise, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 5">
                 <TextBlock Text="duration (hh:mm:ss): " />
                 <TextBox 
-                    Text="{Binding RegisterVM.ExerciseDuration, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding ExerciseDuration, UpdateSourceTrigger=PropertyChanged}"
                     Width="50"/>
             </StackPanel>
             <Button Content="add exercise" 
-                    Command="{Binding RegisterVM.AddExerciseCommand}"
+                    Command="{Binding AddExerciseCommand}"
                     Width="165"/>
         </StackPanel>
 
@@ -128,9 +128,11 @@
             </StackPanel>
 
             <Button 
+                x:Name="saveWorkout"
                 Content="save workout" 
-                    Command="{Binding UpdateWorkoutCommand}"
-                    Margin="5 0 5 5"/>
+                Command="{Binding UpdateWorkoutCommand}"
+                Click="Save_Click"
+                Margin="5 0 5 5"/>
             <TextBlock 
                 HorizontalAlignment="Center"
                 FontWeight="Bold"

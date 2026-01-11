@@ -26,7 +26,7 @@
                 <TextBlock Text="choose exercise: " />                
                 <ComboBox 
                     ItemsSource="{Binding Exercises}"
-                    SelectedItem="{Binding SelectedExcersise}"/>
+                    SelectedItem="{Binding SelectedExcersise, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 5">

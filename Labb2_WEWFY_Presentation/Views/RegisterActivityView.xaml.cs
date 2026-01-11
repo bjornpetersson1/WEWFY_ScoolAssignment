@@ -33,7 +33,7 @@ namespace Labb2_WEWFY_Presentation.Views
         {
             if (DataContext is RegisterWorkoutViewModel vm)
             {
-                await vm.LoadExcersisesAsync();
+                await vm.InitializeAsync();
                 vm.ResetForm();
             }
         }

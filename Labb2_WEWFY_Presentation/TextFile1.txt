@@ -47,14 +47,13 @@ instruktioner
 Lägg till "Are you sure?" på deleteknappen
 
 Redigera tidigare workouts
-	lös binding och inladdning av data till edit-viewn
+	RemoveExerciseCommand
+		RemoveExercise
+		CanRemoveExercise
+	CanSaveWorkout
 
 En knapp som lägger till testdata :)
-
-Register workout-knappen CanExecute har buggat ut
 	
-Minimera-knapp
-
 Total stats
 	Hitta ett sätt att visa totaler?
 	Fixa vad och hur det visas i datagriden

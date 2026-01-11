@@ -101,7 +101,7 @@
                                         Margin="20 0 0 0"
                                         Width="100"/>
 
-                                    <TextBlock Text="{Binding SelectedWorkout.Duration, StringFormat={}{0:hh\\:mm\\:ss}}"
+                                    <TextBlock Text="{Binding Duration, StringFormat={}{0:hh\\:mm\\:ss}}"
                                         HorizontalAlignment="Left"/>
                                 </DockPanel>
                             </DataTemplate>

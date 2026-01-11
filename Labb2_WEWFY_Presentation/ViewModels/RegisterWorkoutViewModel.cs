@@ -179,14 +179,15 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             CreateNewWorkoutAsync();
         }
 
-        public async Task LoadExcersisesAsync()
+        public async Task<ObservableCollection<string>> LoadExercisesAsync()
         {
             using var db = new WEWFYContext();
-            Exercises = new ObservableCollection<string>(
-                await db.Exercises.Select(e => e.ExerciseName).ToListAsync()
-            );
 
-            SelectedExcersise = Exercises.FirstOrDefault();
+            return new ObservableCollection<string>(
+                await db.Exercises
+                        .Select(e => e.ExerciseName)
+                        .ToListAsync()
+            );
         }
         private async void CreateNewWorkoutAsync()
         {
@@ -244,5 +245,11 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             await Task.Delay(3000);
             IsMessageVisible = false;
         }
+        public async Task InitializeAsync()
+        {
+            Exercises = await LoadExercisesAsync();
+            SelectedExcersise = Exercises.FirstOrDefault();
+        }
+
     }
 }

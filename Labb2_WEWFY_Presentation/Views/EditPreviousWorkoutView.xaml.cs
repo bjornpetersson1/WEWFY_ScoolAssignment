@@ -38,5 +38,13 @@ namespace Labb2_WEWFY_Presentation.Views
         {
             EditPreviousVM.LoadSelectedWorkoutData();
         }
+
+        private async void Save_Click(object sender, RoutedEventArgs e)
+        {
+            saveWorkout.IsEnabled = false;
+            await Task.Delay(2000);
+            MainVM.CurrentView = MainVM.MenuView;
+            saveWorkout.IsEnabled = true;
+        }
     }
 }
