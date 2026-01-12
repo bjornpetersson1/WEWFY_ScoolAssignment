@@ -42,6 +42,8 @@ Vyer
 
 	TODO
 
+	säkerhet med userinput
+
 Byt workout till run och exercise till ...
 
 instruktioner
