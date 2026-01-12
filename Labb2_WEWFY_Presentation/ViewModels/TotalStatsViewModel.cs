@@ -2,6 +2,8 @@
 using Labb2_WEWFY_Infrastructure.Data.Model;
 using Labb2_WEWFY_Presentation.Services;
 using Microsoft.EntityFrameworkCore;
+using OxyPlot;
+using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -190,11 +192,79 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 RaisePropertyChanged();
             }
         }
-
+        public PlotModel RatingPieModel { get; }
+        public PlotModel ExercisesPieModel { get; }
         public TotalStatsViewModel()
         {
+            RatingPieModel = new PlotModel() { Title = "Rating" };
+            ExercisesPieModel = new PlotModel() { Title = "Exercises" };
 
         }
+
+        private void UpdatePieChart()
+        {
+            RatingPieModel.Series.Clear();
+
+            if (FilteredWorkoutRows == null || FilteredWorkoutRows.Count == 0)
+                return;
+
+            var selectedWorkoutIds = FilteredWorkoutRows
+                .Select(r => r.WorkoutId)
+                .Distinct()
+                .ToList();
+
+            var rowsToInclude = allWorkoutRows
+                .Where(r => selectedWorkoutIds.Contains(r.WorkoutId));
+
+            var groupedByExercise = rowsToInclude
+                .GroupBy(r => r.ExerciseName)
+                .Select(g => new
+                {
+                    ExerciseName = g.Key,
+                    Count = g.Count()
+                });
+
+            var groupedByRating = rowsToInclude
+                .GroupBy(r => r.Rating)
+                .Select(g => new
+                {
+                    Rating = g.Key,
+                    Count = g.Count()
+                });
+
+            var exercisePieSeries = new PieSeries
+            {
+                StrokeThickness = 1,
+                InsideLabelPosition = 0.8,
+                AngleSpan = 360,
+                StartAngle = 0
+            };
+
+            foreach (var item in groupedByExercise)
+            {
+                exercisePieSeries.Slices.Add(new PieSlice(item.ExerciseName, item.Count));
+            }
+            ExercisesPieModel.Series.Add(exercisePieSeries);
+            ExercisesPieModel.InvalidatePlot(true);
+
+            var ratingPieSeries = new PieSeries
+            {
+                StrokeThickness = 1,
+                InsideLabelPosition = 0.8,
+                AngleSpan = 360,
+                StartAngle = 0
+            };
+            foreach (var item in groupedByRating)
+            {
+                ratingPieSeries.Slices.Add(new PieSlice(item.Rating.ToString(), item.Count));
+            }
+
+            RatingPieModel.Series.Add(ratingPieSeries);
+            RatingPieModel.InvalidatePlot(true);
+        }
+
+
+
 
         public async Task LoadPreviousWorkoutsAsync()
         {
@@ -262,7 +332,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             );
 
             FilteredWorkoutRows = new ObservableCollection<WorkoutExerciseRow>(filtered);
+            UpdatePieChart();
         }
-
     }
 }

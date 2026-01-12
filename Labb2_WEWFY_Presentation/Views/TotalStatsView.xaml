@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Labb2_WEWFY_Presentation.Views"
+             xmlns:oxy="http://oxyplot.org/wpf"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="300" d:Background="White">
@@ -11,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="6*" />
             <RowDefinition Height="9*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />
@@ -143,8 +145,20 @@
             </DockPanel>
             <Separator Margin="0,1"/>
         </StackPanel>
+        <StackPanel
+            Grid.Row="1"
+            Grid.ColumnSpan="4">
+            <oxy:PlotView Model="{Binding RatingPieModel}"
+                  Height="100"
+                  Width="100"/>
+            <oxy:PlotView Model="{Binding ExercisesPieModel}"
+                  Height="100"
+                  Width="100"/>
+
+
+        </StackPanel>
         <DataGrid x:Name="myTotalStatsGrid" 
-                  Grid.Row="1"
+                  Grid.Row="2"
                   Grid.ColumnSpan="4"
                   Margin="0 0 0 0"
                   AutoGenerateColumns="True"
