@@ -42,7 +42,14 @@ Vyer
 
 	TODO
 
+Byt workout till run och exercise till
+
 instruktioner
+	Idén
+	Registrera (constraints?)
+	Editera
+		"gå in på tidigare och välj workouten du vill ändra"
+
 
 Lägg till "Are you sure?" på deleteknappen
 
