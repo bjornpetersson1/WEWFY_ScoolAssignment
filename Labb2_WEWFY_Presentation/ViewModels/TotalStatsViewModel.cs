@@ -196,8 +196,18 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public PlotModel ExercisesPieModel { get; }
         public TotalStatsViewModel()
         {
-            RatingPieModel = new PlotModel() { Title = "Rating" };
-            ExercisesPieModel = new PlotModel() { Title = "Exercises" };
+            RatingPieModel = new PlotModel()
+            {
+                Title = "rating",
+                TitleFontSize = 13,
+                TitleFont = "Consolas"
+            };
+            ExercisesPieModel = new PlotModel() 
+            {
+                Title = "Exercises",
+                TitleFontSize = 13,
+                TitleFont = "Consolas"
+            };
 
         }
 
@@ -237,7 +247,13 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 StrokeThickness = 1,
                 InsideLabelPosition = 0.8,
                 AngleSpan = 360,
-                StartAngle = 0
+                StartAngle = 0,
+                FontSize = 10,
+                Font = "Consolas",
+                InsideLabelFormat = "{1}",
+                OutsideLabelFormat = "",
+                TickHorizontalLength = 0,
+                TickRadialLength = 0
             };
 
             foreach (var item in groupedByExercise)
@@ -252,7 +268,13 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 StrokeThickness = 1,
                 InsideLabelPosition = 0.8,
                 AngleSpan = 360,
-                StartAngle = 0
+                StartAngle = 0,
+                FontSize = 10,
+                Font = "Consolas",
+                InsideLabelFormat = "{1}",
+                OutsideLabelFormat = "",
+                TickHorizontalLength = 0,
+                TickRadialLength = 0
             };
             foreach (var item in groupedByRating)
             {

@@ -148,12 +148,14 @@
         <StackPanel
             Grid.Row="1"
             Grid.ColumnSpan="4">
-            <oxy:PlotView Model="{Binding RatingPieModel}"
-                  Height="100"
-                  Width="100"/>
-            <oxy:PlotView Model="{Binding ExercisesPieModel}"
-                  Height="100"
-                  Width="100"/>
+            <oxy:PlotView 
+                Model="{Binding RatingPieModel}"
+                Height="120"
+                Width="120"/>
+            <oxy:PlotView 
+                Model="{Binding ExercisesPieModel}"
+                Height="120"
+                Width="120"/>
 
 
         </StackPanel>
