@@ -57,19 +57,8 @@ Lägg till "Are you sure?" på deleteknappen
 
 En knapp som lägger till testdata :)
 
-Lägg till fler piecharts
-	fueling
-	waterBefore
-	waterduring
-
-
-		--Fråga Fredrik--
-Fixa säkerheten med att spamma AddWorkout
-	Har löst det genom clickevent. Känns dock inte som en MVVM-vänlig lösning
-
-Total stats
-	Lite skum lösning för att bockarna inte ska va ibockade när man går in och ut ur vyn
-		gör ny instans av vyn när man växlar till vyn
+Total Stats
+	Label med antal workouts included
 
 Register Workout
 	Måste det markeras vad som behövs för att knapparna ska aktiveras?

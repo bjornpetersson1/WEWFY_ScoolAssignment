@@ -190,10 +190,14 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             {
                 filteredWorkoutRows = value;
                 RaisePropertyChanged();
+                UpdatePieChart();
             }
         }
         public PlotModel RatingPieModel { get; }
         public PlotModel ExercisesPieModel { get; }
+        public PlotModel FuelingPieModel { get; }
+        public PlotModel WaterBeforePieModel { get; }
+        public PlotModel WaterDuringPieModel { get; }
         public TotalStatsViewModel()
         {
             RatingPieModel = new PlotModel()
@@ -204,19 +208,47 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             };
             ExercisesPieModel = new PlotModel() 
             {
-                Title = "Exercises",
+                Title = "exercises",
                 TitleFontSize = 13,
                 TitleFont = "Consolas"
             };
-
+            FuelingPieModel = new PlotModel()
+            {
+                Title = "fueling",
+                TitleFontSize = 13,
+                TitleFont = "Consolas"
+            };
+            WaterBeforePieModel = new PlotModel()
+            {
+                Title = "water before",
+                TitleFontSize = 13,
+                TitleFont = "Consolas"
+            };
+            WaterDuringPieModel = new PlotModel()
+            {
+                Title = "water during",
+                TitleFontSize = 13,
+                TitleFont = "Consolas"
+            };
         }
 
         private void UpdatePieChart()
         {
             RatingPieModel.Series.Clear();
+            ExercisesPieModel.Series.Clear();
+            FuelingPieModel.Series.Clear();
+            WaterBeforePieModel.Series.Clear();
+            WaterDuringPieModel.Series.Clear();
 
             if (FilteredWorkoutRows == null || FilteredWorkoutRows.Count == 0)
+            {
+                RatingPieModel.InvalidatePlot(true);
+                ExercisesPieModel.InvalidatePlot(true);
+                FuelingPieModel.InvalidatePlot(true);
+                WaterBeforePieModel.InvalidatePlot(true);
+                WaterDuringPieModel.InvalidatePlot(true);
                 return;
+            }
 
             var selectedWorkoutIds = FilteredWorkoutRows
                 .Select(r => r.WorkoutId)
@@ -239,6 +271,30 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 .Select(g => new
                 {
                     Rating = g.Key,
+                    Count = g.Count()
+                });
+
+            var groupedByFueling = rowsToInclude
+                .GroupBy(r => r.Fueling)
+                .Select(g => new
+                {
+                    Fueling = g.Key,
+                    Count = g.Count()
+                });
+
+            var groupedByWaterBefore = rowsToInclude
+                .GroupBy(r => r.WaterBefore > 0)
+                .Select(g => new
+                {
+                    HasWaterBefore = g.Key,
+                    Count = g.Count()
+                });
+
+            var groupedByWaterDuring = rowsToInclude
+                .GroupBy(r => r.WaterDuring > 0)
+                .Select(g => new
+                {
+                    HasWaterDuring = g.Key,
                     Count = g.Count()
                 });
 
@@ -283,6 +339,72 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
             RatingPieModel.Series.Add(ratingPieSeries);
             RatingPieModel.InvalidatePlot(true);
+
+            var fuelingPieSeries = new PieSeries
+            {
+                StrokeThickness = 1,
+                InsideLabelPosition = 0.8,
+                AngleSpan = 360,
+                StartAngle = 0,
+                FontSize = 10,
+                Font = "Consolas",
+                InsideLabelFormat = "{1}",
+                OutsideLabelFormat = "",
+                TickHorizontalLength = 0,
+                TickRadialLength = 0
+            };
+            foreach (var item in groupedByFueling)
+            {
+                string label = item.Fueling ? "yes" : "no";
+                fuelingPieSeries.Slices.Add(new PieSlice(label, item.Count));
+            }
+
+            FuelingPieModel.Series.Add(fuelingPieSeries);
+            FuelingPieModel.InvalidatePlot(true);
+
+            var waterBeforePieSeries = new PieSeries
+            {
+                StrokeThickness = 1,
+                InsideLabelPosition = 0.8,
+                AngleSpan = 360,
+                StartAngle = 0,
+                FontSize = 10,
+                Font = "Consolas",
+                InsideLabelFormat = "{1}",
+                OutsideLabelFormat = "",
+                TickHorizontalLength = 0,
+                TickRadialLength = 0
+            };
+            foreach (var item in groupedByWaterBefore)
+            {
+                string label = item.HasWaterBefore ? "yes" : "no";
+                waterBeforePieSeries.Slices.Add(new PieSlice(label, item.Count));
+            }
+
+            WaterBeforePieModel.Series.Add(waterBeforePieSeries);
+            WaterBeforePieModel.InvalidatePlot(true);
+
+            var waterDuringPieSeries = new PieSeries
+            {
+                StrokeThickness = 1,
+                InsideLabelPosition = 0.8,
+                AngleSpan = 360,
+                StartAngle = 0,
+                FontSize = 10,
+                Font = "Consolas",
+                InsideLabelFormat = "{1}",
+                OutsideLabelFormat = "",
+                TickHorizontalLength = 0,
+                TickRadialLength = 0
+            };
+            foreach (var item in groupedByWaterDuring)
+            {
+                string label = item.HasWaterDuring ? "yes" : "no";
+                waterDuringPieSeries.Slices.Add(new PieSlice(label, item.Count));
+            }
+
+            WaterDuringPieModel.Series.Add(waterDuringPieSeries);
+            WaterDuringPieModel.InvalidatePlot(true);
         }
 
 

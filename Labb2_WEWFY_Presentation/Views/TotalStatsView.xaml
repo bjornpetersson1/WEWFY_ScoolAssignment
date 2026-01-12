@@ -147,7 +147,7 @@
         </StackPanel>
         <StackPanel
             Grid.Row="1"
-            Grid.ColumnSpan="4">
+            Grid.ColumnSpan="2">
             <oxy:PlotView 
                 Model="{Binding RatingPieModel}"
                 Height="120"
@@ -156,8 +156,23 @@
                 Model="{Binding ExercisesPieModel}"
                 Height="120"
                 Width="120"/>
-
-
+        </StackPanel>
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="2">
+            <oxy:PlotView
+                Model="{Binding FuelingPieModel}"
+                Height="80"
+                Width="130" />
+            <oxy:PlotView
+                Model="{Binding WaterBeforePieModel}"
+                Height="80"
+                Width="130" />
+            <oxy:PlotView
+                Model="{Binding WaterDuringPieModel}"
+                Height="80"
+                Width="130" />
         </StackPanel>
         <DataGrid x:Name="myTotalStatsGrid" 
                   Grid.Row="2"
