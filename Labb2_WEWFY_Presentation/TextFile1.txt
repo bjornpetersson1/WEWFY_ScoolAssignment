@@ -44,7 +44,9 @@ Vyer
 
 säkerhet med userinput
 
-Byt workout till run och exercise till ...
+ändra testdata till engelska
+
+Vad som visas i total stats datagriden
 
 instruktioner
 	Idén
@@ -56,9 +58,6 @@ instruktioner
 Lägg till "Are you sure?" på deleteknappen
 
 En knapp som lägger till testdata :)
-
-Total Stats
-	Label med antal workouts included
 
 Register Workout
 	Måste det markeras vad som behövs för att knapparna ska aktiveras?

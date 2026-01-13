@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="6*" />
             <RowDefinition Height="9*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />
@@ -144,6 +144,18 @@
                     DockPanel.Dock="Left"/>
             </DockPanel>
             <Separator Margin="0,1"/>
+            <Border
+                Margin="0 20 0 0"
+                BorderThickness="1.5"
+                BorderBrush="Black"
+                Background="#e8cccc">
+                <TextBlock 
+                    Text="{Binding TotalActiveWorkoutsText}"
+                    FontWeight="Bold"
+                    HorizontalAlignment="Center"
+                    TextAlignment="Center"
+                    FontSize="14"/>
+            </Border>
         </StackPanel>
         <StackPanel
             Grid.Row="1"
@@ -189,17 +201,38 @@
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
                   RowHeaderWidth="0"
+                  RowHeight="13"
+                  ColumnHeaderHeight="14"
+                  FontSize="9"
                   VerticalScrollBarVisibility="Auto"
                   HorizontalScrollBarVisibility="Auto"
                   AlternationCount="2"
                   RowBackground="WhiteSmoke"
                   AlternatingRowBackground="White" 
                   ItemsSource="{Binding FilteredWorkoutRows}"
-                  SelectedItem="{}"
-                  > 
-            <DataGrid.Columns>
-                
-            </DataGrid.Columns>
-        </DataGrid>
+                  SelectedItem="{}">
+            <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridColumnHeader">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="Black"
+                                            BorderThickness="0.5"
+                                            Padding="0">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+            </DataGrid>
+
+
     </Grid>
 </UserControl>

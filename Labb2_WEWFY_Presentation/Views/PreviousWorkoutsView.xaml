@@ -13,7 +13,7 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="previous workouts"
+        <TextBlock Text="previous runs"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontWeight="Bold"
@@ -91,7 +91,7 @@
                         Margin="0 0 0 8"/>
 
                     <TextBlock Text="{Binding SelectedWorkout.LoggingDate, StringFormat=Date: {0:yyyy-MM-dd}}" />
-                    <TextBlock Text="{Binding SelectedWorkout.NumOfExercises, StringFormat=Number of exercises: {0}}" />
+                    <TextBlock Text="{Binding SelectedWorkout.NumOfExercises, StringFormat=Number of tempos: {0}}" />
                     <ItemsControl ItemsSource="{Binding SelectedWorkout.ExerciseLoggers}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>

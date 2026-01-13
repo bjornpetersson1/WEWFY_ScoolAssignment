@@ -20,6 +20,19 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public PreviousWorkoutsView PreviousWorkoutsView { get; }
         public RegisterWorkoutView RegisterWorkoutView { get; }
         public TotalStatsView TotalStatsView { get; }
+        public DelegateCommand AddTestDataCommand { get; }
+        private bool _isTestdataAdded = false;
+
+        public bool IsTestdataAdded
+        {
+            get { return _isTestdataAdded; }
+            set 
+            {
+                _isTestdataAdded = value;
+                AddTestDataCommand.RaiseCanExecuteChanged();
+            }
+        }
+
         public DelegateCommand ChangeCurrentViewCommand { get; }
         private UserControl? _currentView;
 
@@ -47,7 +60,18 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             TotalStatsView = new TotalStatsView(this);
             EditPreviousWorkoutView = new EditPreviousWorkoutView(this, PreviousWorkoutsVM, RegisterWorkoutVM);
             ChangeCurrentViewCommand = new DelegateCommand(ChangeCurrentView, CanChangeCurrentView);
+            AddTestDataCommand = new DelegateCommand(AddTestData, CanAddTestData);
             CurrentView = MenuView;
+        }
+
+        private bool CanAddTestData(object? arg)
+        {
+            return IsTestdataAdded != true;
+        }
+
+        private void AddTestData(object? obj)
+        {
+            IsTestdataAdded = true;
         }
 
         private bool CanChangeCurrentView(object? arg)
@@ -59,14 +83,12 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         {
             if (obj is UserControl view)
             {
-                //if(view is EditPreviousWorkoutView)
-                //{
-                //    EditPreviousWorkoutView = new EditPreviousWorkoutView(this, PreviousWorkoutsVM, RegisterWorkoutVM);
-                //    view = EditPreviousWorkoutView;
-                //    CurrentView = view;
-                //}
                 CurrentView = view;
             }
+        }
+        private async void AddTestDataToDataBase()
+        {
+
         }
     }
 }

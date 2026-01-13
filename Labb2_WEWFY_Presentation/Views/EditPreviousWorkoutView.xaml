@@ -14,7 +14,7 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="edit previous workout"
+        <TextBlock Text="edit previous run"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                     FontWeight="Bold"
@@ -23,7 +23,7 @@
         <StackPanel Grid.Row="1">
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
-                <TextBlock Text="choose exercise: " />
+                <TextBlock Text="choose tempo: " />
                 <ComboBox 
                     ItemsSource="{Binding Exercises}"
                     SelectedItem="{Binding SelectedExcersise, Mode=TwoWay}"/>
@@ -35,7 +35,7 @@
                     Text="{Binding ExerciseDuration, UpdateSourceTrigger=PropertyChanged}"
                     Width="50"/>
             </StackPanel>
-            <Button Content="add exercise" 
+            <Button Content="add part of run" 
                     Command="{Binding AddExerciseCommand}"
                     Width="165"/>
         </StackPanel>
@@ -79,7 +79,7 @@
                         Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Content="remove exercise" 
+            <Button Content="remove part of run" 
                     Command="{Binding RemoveExerciseCommand}"
                     HorizontalAlignment="Center"
                     Width="165"/>
@@ -88,22 +88,24 @@
         <StackPanel Grid.Row="3">
             <StackPanel Orientation="Horizontal"
                         Margin="10 10 0 0">
-                <TextBlock Text="water before workout (ml): " />
+                <TextBlock Text="water before run (ml): " />
                 <TextBox Text="{Binding WaterBefore, UpdateSourceTrigger=PropertyChanged}"
                          Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
-                <TextBlock Text="water during workout (ml): " />
+                <TextBlock Text="water during run (ml): " />
                 <TextBox Text="{Binding WaterDuring, UpdateSourceTrigger=PropertyChanged}"
                          Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
-                <TextBlock Text="fueling during workout? " />
+                <TextBlock Text="fueling during run? " />
                 <RadioButton Content="Yes" 
+                             VerticalContentAlignment="Bottom"
                              IsChecked="{Binding Fueling, Mode=TwoWay}"/>
                 <RadioButton Content="No" 
+                             VerticalContentAlignment="Bottom"
                              IsChecked="{Binding Fueling, 
                                          Mode=TwoWay,
                                          Converter={StaticResource InverseBoolConverter}}"/>
@@ -129,7 +131,7 @@
 
             <Button 
                 x:Name="saveWorkout"
-                Content="save workout" 
+                Content="save run" 
                 Command="{Binding UpdateWorkoutCommand}"
                 Click="Save_Click"
                 Margin="5 0 5 5"/>

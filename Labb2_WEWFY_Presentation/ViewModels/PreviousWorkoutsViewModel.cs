@@ -77,12 +77,6 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             SelectedWorkout = null;
         }
 
-
-        //public async Task OnNavigatedToAsync()
-        //{
-        //    await LoadPreviousWorkoutsAsync();
-        //}
-
         public async Task LoadPreviousWorkoutsAsync()
         {
             var workouts = await _LoadPreviousWorkoutsService.GetPreviousWorkoutsAsync();

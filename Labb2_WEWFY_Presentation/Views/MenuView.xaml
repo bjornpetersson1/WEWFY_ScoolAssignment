@@ -16,13 +16,13 @@
        VerticalAlignment="Stretch"
        HorizontalAlignment="Stretch"/>
         <StackPanel Grid.Row="1">
-            <Button Content="register workout"
+            <Button Content="register run"
                     Command="{Binding MainVM.ChangeCurrentViewCommand}"
                     CommandParameter="{Binding MainVM.RegisterWorkoutView}"
                     Margin="5"
                     Height="30"
                     />
-            <Button Content="previous workouts" 
+            <Button Content="previous runs" 
                     Command="{Binding MainVM.ChangeCurrentViewCommand}"
                     CommandParameter="{Binding MainVM.PreviousWorkoutsView}"
                     Margin="5"
@@ -44,6 +44,13 @@
                     Click="Button_Quit"
                     Margin="5"
                     Height="30"/>
+            <Button Content="add testdata"
+                    Margin="5"
+                    Height="30"
+                    Width="120"
+                    Command="{Binding MainVM.AddTestDataCommand}"
+                    Background="#e8cccc"
+                    HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>
 </UserControl>

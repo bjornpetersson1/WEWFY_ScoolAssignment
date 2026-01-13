@@ -14,7 +14,7 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="register workout"
+        <TextBlock Text="register run"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                     FontWeight="Bold"
@@ -23,25 +23,27 @@
         <StackPanel Grid.Row="1">
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
-                <TextBlock Text="choose exercise: " />                
+                <TextBlock 
+                    Text="choose tempo: "/>                
                 <ComboBox 
                     ItemsSource="{Binding Exercises}"
                     SelectedItem="{Binding SelectedExcersise, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 5">
-                <TextBlock Text="duration (hh:mm:ss): " />
+                <TextBlock 
+                    Text="duration (hh:mm:ss): " />
                 <TextBox 
                     Text="{Binding ExerciseDuration, UpdateSourceTrigger=PropertyChanged}"
                     Width="50"/>
             </StackPanel>
-            <Button Content="add exercise" 
+            <Button Content="add part of run" 
                     Command="{Binding AddExerciseCommand}"
                     Width="165"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2">
-            <TextBlock Text="current workout" 
+            <TextBlock Text="current run" 
                        FontWeight="Bold"
                        HorizontalAlignment="Center"
                        Margin="10 0 0 0"/>
@@ -70,16 +72,16 @@
                       >
                 <DataGrid.Columns>
                     <DataGridTextColumn 
-                        Header="Exercise" 
+                        Header="tempo" 
                         Binding="{Binding ExerciseName}" 
                         Width="*"/>
                     <DataGridTextColumn 
-                        Header="Duration" 
+                        Header="duration" 
                         Binding="{Binding Duration}"
                         Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Content="remove exercise" 
+            <Button Content="remove part of run" 
                     Command="{Binding RemoveExerciseCommand}"
                     HorizontalAlignment="Center"
                     Width="165"/>
@@ -88,22 +90,27 @@
         <StackPanel Grid.Row="3">
             <StackPanel Orientation="Horizontal"
                         Margin="10 10 0 0">
-                <TextBlock Text="water before workout (ml): " />
+                <TextBlock 
+                    Text="water before run (ml): " />
                 <TextBox Text="{Binding WaterBefore, UpdateSourceTrigger=PropertyChanged}"
                          Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
-                <TextBlock Text="water during workout (ml): " />
+                <TextBlock 
+                    Text="water during run (ml): " />
                 <TextBox Text="{Binding WaterDuring, UpdateSourceTrigger=PropertyChanged}"
                          Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
-                <TextBlock Text="fueling during workout? " />
+                <TextBlock 
+                    Text="fueling during run? " />
                 <RadioButton Content="Yes" 
+                             VerticalContentAlignment="Bottom"
                              IsChecked="{Binding Fueling, Mode=TwoWay}"/>
                 <RadioButton Content="No" 
+                             VerticalContentAlignment="Bottom"
                              IsChecked="{Binding Fueling, 
                                          Mode=TwoWay,
                                          Converter={StaticResource InverseBoolConverter}}"/>

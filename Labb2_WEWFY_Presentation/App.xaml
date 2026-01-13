@@ -9,6 +9,7 @@
         <conv:InverseBoolConverter x:Key="InverseBoolConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/Labb2_WEWFY_Presentation;component/Fonts/#Courier Prime"/>
+            <Setter Property="VerticalAlignment" Value="Bottom" />
         </Style>
         <Style TargetType="Button">
             <Setter Property="Background" Value="White"/>

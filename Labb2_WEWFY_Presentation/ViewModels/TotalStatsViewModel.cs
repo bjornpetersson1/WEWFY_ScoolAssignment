@@ -198,6 +198,20 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public PlotModel FuelingPieModel { get; }
         public PlotModel WaterBeforePieModel { get; }
         public PlotModel WaterDuringPieModel { get; }
+        public string TotalActiveWorkoutsText => $"{TotalActiveWorkouts} \nworkout(s) \nincluded";
+        private int _totalActiveWorkouts;
+
+        public int TotalActiveWorkouts
+        {
+            get { return _totalActiveWorkouts; }
+            set 
+            {
+                _totalActiveWorkouts = value;
+                RaisePropertyChanged();
+                RaisePropertyChanged(nameof(TotalActiveWorkoutsText));
+            }
+        }
+
         public TotalStatsViewModel()
         {
             RatingPieModel = new PlotModel()
@@ -208,7 +222,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             };
             ExercisesPieModel = new PlotModel() 
             {
-                Title = "exercises",
+                Title = "tempos",
                 TitleFontSize = 13,
                 TitleFont = "Consolas"
             };
@@ -240,17 +254,30 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             WaterBeforePieModel.Series.Clear();
             WaterDuringPieModel.Series.Clear();
 
-            if (FilteredWorkoutRows == null || FilteredWorkoutRows.Count == 0)
+            if (allWorkoutRows == null) return;
+
+            IEnumerable<WorkoutExerciseRow> rowsToUse;
+
+            if (FilteredWorkoutRows != null && FilteredWorkoutRows.Count > 0)
             {
-                RatingPieModel.InvalidatePlot(true);
-                ExercisesPieModel.InvalidatePlot(true);
-                FuelingPieModel.InvalidatePlot(true);
-                WaterBeforePieModel.InvalidatePlot(true);
-                WaterDuringPieModel.InvalidatePlot(true);
-                return;
+                //RatingPieModel.InvalidatePlot(true);
+                //ExercisesPieModel.InvalidatePlot(true);
+                //FuelingPieModel.InvalidatePlot(true);
+                //WaterBeforePieModel.InvalidatePlot(true);
+                //WaterDuringPieModel.InvalidatePlot(true);
+                //return;
+                rowsToUse = FilteredWorkoutRows;
+            }
+            else
+            {
+                rowsToUse = allWorkoutRows;
             }
 
-            var selectedWorkoutIds = FilteredWorkoutRows
+            //var selectedWorkoutIds = FilteredWorkoutRows
+            //    .Select(r => r.WorkoutId)
+            //    .Distinct()
+            //    .ToList();
+            var selectedWorkoutIds = rowsToUse
                 .Select(r => r.WorkoutId)
                 .Distinct()
                 .ToList();
@@ -405,6 +432,10 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
             WaterDuringPieModel.Series.Add(waterDuringPieSeries);
             WaterDuringPieModel.InvalidatePlot(true);
+            TotalActiveWorkouts = rowsToUse
+                                    .Select(r => r.WorkoutId)
+                                    .Distinct()
+                                    .Count();
         }
 
 
