@@ -14,6 +14,22 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 {
     public class PreviousWorkoutsViewModel : ViewModelBase
     {
+        private bool _showDeleteConfirmation;
+        public bool ShowDeleteConfirmation
+        {
+            get => _showDeleteConfirmation;
+            set
+            {
+                _showDeleteConfirmation = value;
+                RaisePropertyChanged();
+                DeleteWorkoutCommand.RaiseCanExecuteChanged();
+                CancelDeleteCommand.RaiseCanExecuteChanged();
+            }
+
+        }
+        public DelegateCommand ShowDeleteConfirmationCommand { get; }
+        public DelegateCommand CancelDeleteCommand { get; }
+
         public DelegateCommand DeleteWorkoutCommand { get; set; }
         public bool HaveSelectedWorkout => SelectedWorkout != null;
         private ObservableCollection<Workout> workouts;
@@ -36,7 +52,9 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 _selectedWorkout = value;
                 RaisePropertyChanged();
                 RaisePropertyChanged(nameof(HaveSelectedWorkout));
+                ShowDeleteConfirmationCommand.RaiseCanExecuteChanged();
                 DeleteWorkoutCommand.RaiseCanExecuteChanged();
+
             }
         }
 
@@ -45,18 +63,41 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public PreviousWorkoutsViewModel(MainWindowViewModel mainWindow)
         {
             DeleteWorkoutCommand = new DelegateCommand(DeleteWorkout, CanDeleteWorkout);
+            ShowDeleteConfirmationCommand = new DelegateCommand(OpenDeleteCofirmation, CanShowDeleteConfirmation);
+            CancelDeleteCommand = new DelegateCommand(CancelDelete, CanCancelDelete);
             _LoadPreviousWorkoutsService = new LoadPreviousWorkoutsService();
             MainVM = mainWindow;
         }
 
-        private bool CanDeleteWorkout(object? arg)
+        private void OpenDeleteCofirmation(object? obj)
+        {
+            ShowDeleteConfirmation = true;
+        }
+
+        private bool CanShowDeleteConfirmation(object? arg)
         {
             return SelectedWorkout != null;
+        }
+
+        private void CancelDelete(object? obj)
+        {
+            ShowDeleteConfirmation = false;
+        }
+
+        private bool CanCancelDelete(object? arg)
+        {
+            return ShowDeleteConfirmation;
+        }
+
+        private bool CanDeleteWorkout(object? arg)
+        {
+            return ShowDeleteConfirmation && SelectedWorkout != null;
         }
 
         private void DeleteWorkout(object? obj)
         {
             _ = DeleteWorkoutAsync(obj);
+            ShowDeleteConfirmation = false;
         }
         private async Task DeleteWorkoutAsync(object? obj)
         {

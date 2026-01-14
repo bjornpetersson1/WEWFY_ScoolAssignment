@@ -1,17 +1,4 @@
-﻿	3 delar
-
-1.	Fördefinerade träningsformer och parametrar
-			uppvärmning
-			intervaller
-			långlöpning
-			nervarvning
-		Mat
-		Dryck
-2.	Användaren kan göra egna träningspass som innehåller flera tränignsformer
-		Loggas med betyg
-3.	Visa aggregerad info som sorterar på parametrar
-
-	TODO
+﻿	TODO
 
 instruktioner
 	Idén
@@ -20,8 +7,6 @@ instruktioner
 	Editera
 		"gå in på tidigare och välj workouten du vill ändra"
 	add testdata-knappen
-
-Lägg till "Are you sure?" på deleteknappen
 
 ReadMe
 Instruktioner för Fredriks skull
