@@ -1,5 +1,7 @@
 ﻿	TODO
 
+Fueling, WaterDuring och Before räknar på antal tempos och inte workouts när dom delar upp pajdiagrammen... FIXA!!
+
 instruktioner
 	Idén
 		inte till för att hålla koll på rekord, bara din egen känsla
