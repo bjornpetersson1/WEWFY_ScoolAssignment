@@ -44,8 +44,6 @@ Vyer
 
 säkerhet med userinput
 
-ändra testdata till engelska
-
 Vad som visas i total stats datagriden
 
 instruktioner
@@ -57,8 +55,12 @@ instruktioner
 Lägg till "Are you sure?" på deleteknappen
 
 Register Workout
-	Måste det markeras vad som behövs för att knapparna ska aktiveras?
 	maxvärdet på duration?
 		ToolTip
 
-Är alla savechanges async?
+ReadMe
+Instruktioner för Fredriks skull
+	ex
+	klona
+	återställ backup
+	fyll i user secrets

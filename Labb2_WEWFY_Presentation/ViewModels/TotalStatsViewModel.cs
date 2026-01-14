@@ -260,12 +260,6 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
             if (FilteredWorkoutRows != null && FilteredWorkoutRows.Count > 0)
             {
-                //RatingPieModel.InvalidatePlot(true);
-                //ExercisesPieModel.InvalidatePlot(true);
-                //FuelingPieModel.InvalidatePlot(true);
-                //WaterBeforePieModel.InvalidatePlot(true);
-                //WaterDuringPieModel.InvalidatePlot(true);
-                //return;
                 rowsToUse = FilteredWorkoutRows;
             }
             else
@@ -273,10 +267,6 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 rowsToUse = allWorkoutRows;
             }
 
-            //var selectedWorkoutIds = FilteredWorkoutRows
-            //    .Select(r => r.WorkoutId)
-            //    .Distinct()
-            //    .ToList();
             var selectedWorkoutIds = rowsToUse
                 .Select(r => r.WorkoutId)
                 .Distinct()
