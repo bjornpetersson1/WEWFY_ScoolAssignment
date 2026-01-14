@@ -13,12 +13,6 @@
 
 	TODO
 
-säkerhet med userinput
-	duration
-	waterbefore
-	waterduring
-	notes
-
 instruktioner
 	Idén
 		inte till för att hålla koll på rekord, bara din egen känsla
@@ -38,5 +32,5 @@ Instruktioner för Fredriks skull
 		add testdata
 
 Fixa ensureCreated och ensureDeleted-grejen
-	egentligen bar ta bort ensureDeleted
+	egentligen bara att ta bort ensureDeleted
 		måste fixa buggen så man inte kan trycka add testdata igen när man startar om programmet

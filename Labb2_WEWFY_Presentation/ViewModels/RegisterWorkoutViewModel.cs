@@ -25,13 +25,14 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public string ExerciseDuration
         {
             get => _exerciseDuration;
-            set 
+            set
             {
-                _exerciseDuration = value; 
+                _exerciseDuration = value;
                 RaisePropertyChanged();
                 AddExerciseCommand.RaiseCanExecuteChanged();
             }
         }
+
 
         private ObservableCollection<ExerciseLoggerViewModel> _currentWorkoutExercises = new();
         public ObservableCollection<ExerciseLoggerViewModel> CurrentWorkoutExercises
@@ -61,14 +62,24 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public int WaterBefore
         {
             get => _waterBefore;
-            set { _waterBefore = value; RaisePropertyChanged(); }
+            set 
+            {
+                if (value > 3000) value = 3000;
+                _waterBefore = value; 
+                RaisePropertyChanged(); 
+            }
         }
 
         private int _waterDuring;
         public int WaterDuring
         {
             get => _waterDuring;
-            set { _waterDuring = value; RaisePropertyChanged(); }
+            set 
+            {
+                if (value > 3000) value = 3000;
+                _waterDuring = value; 
+                RaisePropertyChanged(); 
+            }
         }
 
         private bool _fueling;
@@ -82,7 +93,20 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public string? Notes
         {
             get => _notes;
-            set { _notes = value; RaisePropertyChanged(); }
+            set 
+            {
+                if (value == null)
+                {
+                    _notes = null;
+                }
+                else
+                {
+                    _notes = value.Length > 500
+                        ? value.Substring(0, 500)
+                        : value;
+                }
+                RaisePropertyChanged(); 
+            }
         }
 
         private int _experienceRating = 3;
@@ -117,6 +141,21 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             RemoveExerciseCommand = new DelegateCommand(RemoveExercise, CanRemoveExercise);
         }
 
+        private bool TryGetExerciseDuration(out TimeSpan duration)
+        {
+            duration = TimeSpan.Zero;
+
+            if (!TimeSpan.TryParse(ExerciseDuration, out var parsed))
+                return false;
+
+            var max = new TimeSpan(23, 59, 59);
+
+            if (parsed < TimeSpan.Zero || parsed > max)
+                return false;
+
+            duration = parsed;
+            return true;
+        }
 
         private bool CanRemoveExercise(object? arg)
         {
@@ -135,18 +174,14 @@ namespace Labb2_WEWFY_Presentation.ViewModels
 
         private bool CanAddExercise(object? arg)
         {
-            if (!TimeSpan.TryParse(ExerciseDuration, out var duration))
-                return false;
-
-
-            return duration.TotalDays < 1 && duration > TimeSpan.Zero;
+            return TryGetExerciseDuration(out _);
         }
         private async void AddExercise(object? obj)
         {
             if (string.IsNullOrWhiteSpace(SelectedExcersise))
                 return;
 
-            if (!TimeSpan.TryParse(ExerciseDuration, out var duration))
+            if (!TryGetExerciseDuration(out var duration))
                 return;
 
             using var db = new WEWFYContext();
