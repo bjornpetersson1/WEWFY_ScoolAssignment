@@ -270,7 +270,7 @@
                     />
                 <DataGridTextColumn 
                     Header="date" 
-                    Binding="{Binding Date, StringFormat={}{0:yyyy-MM-dd}}" 
+                    Binding="{Binding Date, StringFormat=yy\\/MM\\/dd}" 
                     />
             </DataGrid.Columns>
         </DataGrid>
