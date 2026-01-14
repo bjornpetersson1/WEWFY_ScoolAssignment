@@ -209,7 +209,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public PlotModel FuelingPieModel { get; }
         public PlotModel WaterBeforePieModel { get; }
         public PlotModel WaterDuringPieModel { get; }
-        public string TotalActiveWorkoutsText => $"{TotalActiveWorkouts} \nworkout(s) \nincluded";
+        public string TotalActiveWorkoutsText => $"{TotalActiveWorkouts} \nrun(s) \nincluded";
         private int _totalActiveWorkouts;
 
         public int TotalActiveWorkouts
