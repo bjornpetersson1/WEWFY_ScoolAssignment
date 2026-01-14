@@ -75,6 +75,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             Workouts.Remove(SelectedWorkout);
 
             SelectedWorkout = null;
+
+            MainVM.IsTestdataAdded = await db.Workouts.AnyAsync(w => w.IsTestData);
         }
 
         public async Task LoadPreviousWorkoutsAsync()

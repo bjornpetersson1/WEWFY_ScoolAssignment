@@ -30,7 +30,3 @@ Instruktioner för Fredriks skull
 		återställ backup
 		fyll i user secrets
 		add testdata
-
-Fixa ensureCreated och ensureDeleted-grejen
-	egentligen bara att ta bort ensureDeleted
-		måste fixa buggen så man inte kan trycka add testdata igen när man startar om programmet

@@ -16,6 +16,7 @@ namespace Labb2_WEWFY_Domain
         public string? Notes { get; set; }
         public int ExperienceRating { get; set; }
         public List<ExerciseLogger> ExerciseLoggers { get; set; } = new();
+        public bool IsTestData { get; set; }
         public int NumOfExercises =>
                     ExerciseLoggers?.Count ?? 0;
         public TimeSpan TotalDuration =>

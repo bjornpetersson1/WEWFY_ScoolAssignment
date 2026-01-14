@@ -21,7 +21,7 @@ namespace Labb2_WEWFY_Presentation.Windows
         public MainWindow()
         {
             using var db = new WEWFYContext();
-            db.Database.EnsureDeleted();
+            //db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
             InitializeComponent();
             DataContext = new MainWindowViewModel();
@@ -44,5 +44,14 @@ namespace Labb2_WEWFY_Presentation.Windows
         {
             WindowState = WindowState.Minimized;
         }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is MainWindowViewModel vm)
+            {
+                await vm.InitializeAsync();
+            }
+        }
+
     }
 }

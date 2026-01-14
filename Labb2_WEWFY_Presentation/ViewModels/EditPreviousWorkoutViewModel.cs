@@ -182,7 +182,10 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         }
         private bool CanAddExercise(object? arg)
         {
-            return TryGetExerciseDuration(out _);
+            if (!TimeSpan.TryParse(ExerciseDuration, out var duration))
+                return false;
+
+            return duration.TotalDays < 1 && duration > TimeSpan.Zero && TryGetExerciseDuration(out _);
         }
         private async void AddExercise(object? obj)
         {

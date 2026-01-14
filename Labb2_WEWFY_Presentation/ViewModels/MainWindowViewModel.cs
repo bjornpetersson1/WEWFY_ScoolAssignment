@@ -2,6 +2,7 @@
 using Labb2_WEWFY_Infrastructure.Data.Model;
 using Labb2_WEWFY_Presentation.Commands;
 using Labb2_WEWFY_Presentation.Views;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public RegisterWorkoutView RegisterWorkoutView { get; }
         public TotalStatsView TotalStatsView { get; }
         public DelegateCommand AddTestDataCommand { get; }
-        private bool _isTestdataAdded = false;
+        private bool _isTestdataAdded;
 
         public bool IsTestdataAdded
         {
@@ -31,6 +32,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             set 
             {
                 _isTestdataAdded = value;
+                RaisePropertyChanged();
                 AddTestDataCommand.RaiseCanExecuteChanged();
             }
         }
@@ -89,6 +91,17 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 CurrentView = view;
             }
         }
+        public async Task InitializeAsync()
+        {
+            IsTestdataAdded = await TestDataExistsAsync();
+        }
+
+        private async Task<bool> TestDataExistsAsync()
+        {
+            using var db = new WEWFYContext();
+            return await db.Workouts.AnyAsync(w => w.IsTestData);
+        }
+
         private async Task AddTestDataToDataBase()
         {
             using var db = new WEWFYContext();
@@ -102,7 +115,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                     WaterBefore = 330,
                     WaterDuring = 0,
                     LoggingDate = new DateTime(2025, 12, 01),
-                    Notes = "Ok run"
+                    Notes = "Ok run",
+                    IsTestData = true
                 },
                 new Workout
                 {
@@ -111,7 +125,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                     WaterBefore = 500,
                     WaterDuring = 0,
                     LoggingDate = new DateTime(2025, 12, 03),
-                    Notes = "Very comfortable"
+                    Notes = "Very comfortable",
+                    IsTestData = true
                 },
                 new Workout
                 {
@@ -120,7 +135,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                     WaterBefore = 400,
                     WaterDuring = 500,
                     LoggingDate = new DateTime(2025, 12, 06),
-                    Notes = "Easy all the way"
+                    Notes = "Easy all the way",
+                    IsTestData = true
                 },
                 new Workout
                 {
@@ -129,7 +145,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                     WaterBefore = 500,
                     WaterDuring = 0,
                     LoggingDate = new DateTime(2025, 12, 07),
-                    Notes = "Extremly heavy but didn't quit"
+                    Notes = "Extremly heavy but didn't quit",
+                    IsTestData = true
                 },
                 new Workout
                 {
@@ -138,7 +155,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                     WaterBefore = 550,
                     WaterDuring = 0,
                     LoggingDate = new DateTime(2025, 12, 09),
-                    Notes = "Tried gummy bears, felt ok"
+                    Notes = "Tried gummy bears, felt ok",
+                    IsTestData = true
                 },
                 new Workout
                 {
@@ -147,7 +165,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                     WaterBefore = 300,
                     WaterDuring = 0,
                     LoggingDate = new DateTime(2025, 12, 11),
-                    Notes = "Too short, were stressed and didn't get tired"
+                    Notes = "Too short, were stressed and didn't get tired",
+                    IsTestData = true
                 }
             };
             await db.Workouts.AddRangeAsync(testDataWorkouts);
@@ -159,97 +178,97 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 {
                     Duration = new TimeSpan(0, 3, 0),
                     ExerciseId = 1,
-                    WorkoutId = 1
+                    Workout = testDataWorkouts[0]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(1, 40, 0),
                     ExerciseId = 4,
-                    WorkoutId = 1
+                    Workout = testDataWorkouts[0]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 2, 0),
                     ExerciseId = 2,
-                    WorkoutId = 1
+                    Workout = testDataWorkouts[0]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 2, 0),
                     ExerciseId = 1,
-                    WorkoutId = 2
+                    Workout = testDataWorkouts[1]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 55, 0),
                     ExerciseId = 3,
-                    WorkoutId = 2
+                    Workout = testDataWorkouts[1]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 5, 0),
                     ExerciseId = 2,
-                    WorkoutId = 2
+                    Workout = testDataWorkouts[1]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 10, 0),
                     ExerciseId = 1,
-                    WorkoutId = 3
+                    Workout = testDataWorkouts[2]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 50, 0),
                     ExerciseId = 3,
-                    WorkoutId = 3
+                    Workout = testDataWorkouts[2]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 20, 0),
                     ExerciseId = 5,
-                    WorkoutId = 3
+                    Workout = testDataWorkouts[2]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 5, 0),
                     ExerciseId = 1,
-                    WorkoutId = 4
+                    Workout = testDataWorkouts[3]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(1, 15, 0),
                     ExerciseId = 4,
-                    WorkoutId = 4
+                    Workout = testDataWorkouts[3]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 1, 30),
                     ExerciseId = 2,
-                    WorkoutId = 4
+                    Workout = testDataWorkouts[3]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 15, 0),
                     ExerciseId = 1,
-                    WorkoutId = 5
+                    Workout = testDataWorkouts[4]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 50, 0),
                     ExerciseId = 5,
-                    WorkoutId = 5
+                    Workout = testDataWorkouts[4]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 10, 0),
                     ExerciseId = 2,
-                    WorkoutId = 5
+                    Workout = testDataWorkouts[4]
                 },
                 new ExerciseLogger
                 {
                     Duration = new TimeSpan(0, 35, 0),
                     ExerciseId = 5,
-                    WorkoutId = 6
+                    Workout = testDataWorkouts[5]
 
                 }
             };
