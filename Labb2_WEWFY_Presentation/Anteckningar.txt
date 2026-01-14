@@ -11,56 +11,32 @@
 		Loggas med betyg
 3.	Visa aggregerad info som sorterar på parametrar
 
-
-Tabeller
-
-Träningsformer
-	string Uppvärmning
-	string Nedvarvning
-	string Intervaller
-	string Långlöpning
-	string Tävlingstempo
-
-TräningsDelPass
-	int Träningsform
-	int Längd i minuter
-	int TräningHelPass
-
-TräningHelPass
-	DateTime Datum
-	int Vatten i ml innan
-	int Vatten i ml under
-	bool Fueling
-	string Anteckningar
-	int UpplevelseBetyg
-
-Vyer
-	sortera på allt förutom Anteckningar antar jag?
-	Genomsnittsbetyg på något?
-
-	
-
 	TODO
 
 säkerhet med userinput
-
-Vad som visas i total stats datagriden
+	duration
+	waterbefore
+	waterduring
+	notes
 
 instruktioner
 	Idén
-	Registrera (constraints?)
+		inte till för att hålla koll på rekord, bara din egen känsla
+	Registrera
 	Editera
 		"gå in på tidigare och välj workouten du vill ändra"
+	add testdata-knappen
 
 Lägg till "Are you sure?" på deleteknappen
 
-Register Workout
-	maxvärdet på duration?
-		ToolTip
-
 ReadMe
 Instruktioner för Fredriks skull
-	ex
-	klona
-	återställ backup
-	fyll i user secrets
+	ex:
+		klona
+		återställ backup
+		fyll i user secrets
+		add testdata
+
+Fixa ensureCreated och ensureDeleted-grejen
+	egentligen bar ta bort ensureDeleted
+		måste fixa buggen så man inte kan trycka add testdata igen när man startar om programmet

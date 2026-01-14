@@ -190,7 +190,7 @@
                   Grid.Row="2"
                   Grid.ColumnSpan="4"
                   Margin="0 0 0 0"
-                  AutoGenerateColumns="True"
+                  AutoGenerateColumns="False"
                   IsReadOnly="True"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
@@ -209,30 +209,70 @@
                   AlternationCount="2"
                   RowBackground="WhiteSmoke"
                   AlternatingRowBackground="White" 
-                  ItemsSource="{Binding FilteredWorkoutRows}"
+                  ItemsSource="{Binding WorkoutSummaryRows}"
                   SelectedItem="{}">
             <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="Padding" Value="0"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="DataGridColumnHeader">
-                                    <Border Background="{TemplateBinding Background}"
-                                            BorderBrush="Black"
-                                            BorderThickness="0.5"
-                                            Padding="0">
-                                        <ContentPresenter HorizontalAlignment="Center"
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridColumnHeader">
+                                <Border 
+                                    x:Name="border"
+                                    BorderBrush="Black"
+                                    BorderThickness="0.5"
+                                    Padding="2 0 2 0">
+                                    <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
-            </DataGrid>
-
-
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border"
+                                                Property="Background"
+                                                Value="#e8cccc" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="rating" 
+                    Binding="{Binding Rating}"
+                    />
+                <DataGridTextColumn 
+                    Header="tempos" 
+                    Binding="{Binding Tempos}" 
+                    />
+                <DataGridTextColumn 
+                    Header="duration" 
+                    Binding="{Binding TotalDuration}"
+                    />
+                <DataGridTextColumn 
+                    Header="water before" 
+                    Binding="{Binding WaterBefore}" 
+                    />
+                <DataGridTextColumn 
+                    Header="water during" 
+                    Binding="{Binding WaterDuring}" 
+                    />
+                <DataGridTextColumn 
+                    Header="fueling" 
+                    Binding="{Binding Fueling}"
+                    />
+                <DataGridTextColumn 
+                    Header="notes" 
+                    Binding="{Binding Notes}"
+                    />
+                <DataGridTextColumn 
+                    Header="date" 
+                    Binding="{Binding Date, StringFormat={}{0:yyyy-MM-dd}}" 
+                    />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

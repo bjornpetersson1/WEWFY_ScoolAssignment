@@ -17,10 +17,10 @@ public class WorkoutEntityTypeConfig : IEntityTypeConfiguration<Workout>
                 "[ExperienceRating] >= 0 AND [ExperienceRating] <= 5");
             table.HasCheckConstraint(
                 "CK_Workouts_WaterDuring",
-                "[ExperienceRating] >= 0 AND [ExperienceRating] <= 3000");
+                "[WaterDuring] >= 0 AND [WaterDuring] <= 3000");
             table.HasCheckConstraint(
                 "CK_Workouts_WaterBefore",
-                "[ExperienceRating] >= 0 AND [ExperienceRating] <= 3000");
+                "[WaterBefore] >= 0 AND [WaterBefore] <= 3000");
         });
 
         builder.Property(w => w.Notes)

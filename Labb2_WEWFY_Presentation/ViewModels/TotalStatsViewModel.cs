@@ -193,6 +193,17 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 UpdatePieChart();
             }
         }
+        private ObservableCollection<WorkoutSummaryRow> _workoutSummaryRows;
+        public ObservableCollection<WorkoutSummaryRow> WorkoutSummaryRows
+        {
+            get => _workoutSummaryRows;
+            set
+            {
+                _workoutSummaryRows = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public PlotModel RatingPieModel { get; }
         public PlotModel ExercisesPieModel { get; }
         public PlotModel FuelingPieModel { get; }
@@ -244,6 +255,25 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 TitleFontSize = 13,
                 TitleFont = "Consolas"
             };
+        }
+        private void UpdateWorkoutGrid(IEnumerable<WorkoutExerciseRow> rows)
+        {
+            var grouped = rows
+                .GroupBy(r => r.WorkoutId)
+                .Select(g => new WorkoutSummaryRow
+                {
+                    WorkoutId = g.Key,
+                    Date = g.First().Date,
+                    Tempos = string.Join(", ", g.Select(x => x.ExerciseName).Distinct()),
+                    TotalDuration = TimeSpan.FromTicks(g.Sum(x => x.Duration.Ticks)),
+                    WaterBefore = g.First().WaterBefore,
+                    WaterDuring = g.First().WaterDuring,
+                    Fueling = g.First().Fueling,
+                    Rating = g.First().Rating,
+                    Notes = g.First().Notes
+                });
+
+            WorkoutSummaryRows = new ObservableCollection<WorkoutSummaryRow>(grouped);
         }
 
         private void UpdatePieChart()
@@ -426,10 +456,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                                     .Select(r => r.WorkoutId)
                                     .Distinct()
                                     .Count();
+            UpdateWorkoutGrid(rowsToInclude);
         }
-
-
-
 
         public async Task LoadPreviousWorkoutsAsync()
         {
@@ -450,6 +478,7 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                         Rating = w.ExperienceRating,
                         TotalDuration = TimeSpan.FromTicks(w.ExerciseLoggers.Sum(e => e.Duration.Ticks)),
                         NumOfExercises = w.ExerciseLoggers.Count,
+                        Notes = w.Notes,
                         Duration = el.Duration,
                         ExerciseName = el.Exercise.ExerciseName
                     }))

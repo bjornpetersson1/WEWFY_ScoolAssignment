@@ -35,7 +35,8 @@
                     Text="duration (hh:mm:ss): " />
                 <TextBox 
                     Text="{Binding ExerciseDuration, UpdateSourceTrigger=PropertyChanged}"
-                    Width="50"/>
+                    Width="50"
+                    ToolTip="maximum duration 23:59:59"/>
             </StackPanel>
             <Button Content="add part of run" 
                     Command="{Binding AddExerciseCommand}"
@@ -93,14 +94,16 @@
                 <TextBlock 
                     Text="water before run (ml): " />
                 <TextBox Text="{Binding WaterBefore, UpdateSourceTrigger=PropertyChanged}"
-                         Width="35"/>
+                         Width="35"
+                         ToolTip="maximum 3000 ml"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
                 <TextBlock 
                     Text="water during run (ml): " />
                 <TextBox Text="{Binding WaterDuring, UpdateSourceTrigger=PropertyChanged}"
-                         Width="35"/>
+                         Width="35"
+                         ToolTip="maximum 3000 ml"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 0">
@@ -119,7 +122,8 @@
                         Margin="10 0 0 0">
                 <TextBlock Text="notes: " />
                 <TextBox Text="{Binding Notes}"
-                         Width="179"/>
+                         Width="179"
+                         ToolTip="maximum 500 characters"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="10 0 0 5">
