@@ -4,6 +4,11 @@ More than not the focus was on numbers (speed, weight, distance etc.) and not ho
 By listening to your body more than chasing numbers i believe is a more healthy way of working out.  
 My main workout is long distance running and therefore WEWFY is built with running in mind.  
   
+
+Video of me using the app:  
+Part 1: https://github.com/user-attachments/assets/e56a63c9-30ab-4127-bf89-0c65da9e35af  
+Part 2: https://github.com/user-attachments/assets/72b85f84-9072-4916-83f7-65bb5ddc7b7b  
+
     
 ## The Idea
 Track your runs based on your perceived effort and experience.  
