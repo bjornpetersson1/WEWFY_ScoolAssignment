@@ -11,12 +11,18 @@
             <RowDefinition Height="4*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="Testest"
+        <TextBlock Text="{Binding Instructions}"
+                   TextWrapping="Wrap"
+                   FontSize="15"
+                   Padding="10"
+                   VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Grid.Row="0" />
-        <Button Content="OK"
-                Command="{Binding MainVM.ChangeCurrentViewCommand}"
-                CommandParameter="{Binding MainVM.MenuView}"
+        <Button Content="ok"
+                Width="100"
+                Height="40"
+                Command="{Binding MainVm.ChangeCurrentViewCommand}"
+                CommandParameter="{Binding MainVm.MenuView}"
                 Grid.Row="1"/>
     </Grid>
 </UserControl>

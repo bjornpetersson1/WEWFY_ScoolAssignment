@@ -9,6 +9,14 @@ instruktioner
 		"gå in på tidigare och välj workouten du vill ändra"
 	add testdata-knappen
 
+	the idea
+	track your runs based on your percieved effort and experience.
+	by this you can make your own conclusion of what ever works for you.
+
+	functions
+	you are able to register runs, study and edit previous runs and browse your total stats with a number of filters.
+
+
 ReadMe
 Instruktioner för Fredriks skull
 	ex:

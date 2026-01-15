@@ -25,8 +25,7 @@ namespace Labb2_WEWFY_Presentation.Views
         public InstructionsView(MainWindowViewModel mainVM)
         {
             InitializeComponent();
-            MainVM = mainVM;
-            DataContext = this;
+            DataContext = new InstructionsViewModel(mainVM);
         }
     }
 }
