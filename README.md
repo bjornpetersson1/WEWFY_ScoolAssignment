@@ -10,10 +10,10 @@ Track your runs based on your perceived effort and experience.
 By this you can make your own conclusion of whatever works for you.  
   
 ### Functions
- - add test data
- - register runs
- - study and edit previous runs
- - rowse your total stats with a number of filters
+ - Add test data
+ - Register runs
+ - Study and edit previous runs
+ - Browse your total stats with a number of filters
 
 
 ## Instructions
