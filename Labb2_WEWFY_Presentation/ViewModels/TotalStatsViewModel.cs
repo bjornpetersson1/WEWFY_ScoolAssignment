@@ -326,7 +326,10 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 .Select(g => new
                 {
                     Fueling = g.Key,
-                    Count = g.Count()
+                    Count = g
+                    .Select(g => g.WorkoutId)
+                    .Distinct()
+                    .Count()
                 });
 
             var groupedByWaterBefore = rowsToInclude
@@ -334,7 +337,10 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 .Select(g => new
                 {
                     HasWaterBefore = g.Key,
-                    Count = g.Count()
+                    Count = g
+                    .Select(g => g.WorkoutId)
+                    .Distinct()
+                    .Count()
                 });
 
             var groupedByWaterDuring = rowsToInclude
@@ -342,7 +348,10 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 .Select(g => new
                 {
                     HasWaterDuring = g.Key,
-                    Count = g.Count()
+                    Count = g
+                    .Select(g => g.WorkoutId)
+                    .Distinct()
+                    .Count()
                 });
 
             var exercisePieSeries = new PieSeries

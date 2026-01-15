@@ -1,6 +1,5 @@
 ﻿	TODO
 
-Fueling, WaterDuring och Before räknar på antal tempos och inte workouts när dom delar upp pajdiagrammen... FIXA!!
 
 instruktioner
 	Idén
