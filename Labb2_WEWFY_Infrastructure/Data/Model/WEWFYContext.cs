@@ -20,8 +20,8 @@ public class WEWFYContext : DbContext
         var config = new ConfigurationBuilder().AddUserSecrets<WEWFYContext>().Build();
         var connectionString = new SqlConnectionStringBuilder()
         {
-            ServerSPN = config["ServerName"],
-            InitialCatalog = config["DataBase"],
+            ServerSPN = config["Server"],
+            InitialCatalog = config["DataBaseName"],
             TrustServerCertificate = true,
             IntegratedSecurity = true
         }.ToString();
