@@ -1,9 +1,1 @@
-﻿	TODO
-
-ReadMe
-Instruktioner för Fredriks skull
-	ex:
-		klona
-		återställ backup
-		fyll i user secrets
-		add testdata
+﻿
