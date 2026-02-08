@@ -21,8 +21,9 @@
                     FontSize="20"
                    Grid.Row="0"/>
         <StackPanel Grid.Row="1">
+            <Separator Margin="0,1"/>
             <StackPanel Orientation="Horizontal"
-                        Margin="10 0 0 0">
+                        Margin="10 1 0 0">
                 <TextBlock 
                     Text="choose tempo: "/>                
                 <ComboBox 
@@ -44,6 +45,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2">
+            <Separator Margin="0,1"/>
             <TextBlock Text="current run" 
                        FontWeight="Bold"
                        HorizontalAlignment="Center"
@@ -104,6 +106,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3">
+            <Separator Margin="0,1"/>
             <StackPanel Orientation="Horizontal"
                         Margin="10 10 0 0">
                 <TextBlock 
