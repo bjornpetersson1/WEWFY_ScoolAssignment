@@ -48,40 +48,53 @@
                        FontWeight="Bold"
                        HorizontalAlignment="Center"
                        Margin="10 0 0 0"/>
-            <DataGrid x:Name="myWorkoutGrid" 
-                      Margin="10 0 10 0"
-                      Width="155"
-                      Height="110"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True"
-                      CanUserAddRows="False"
-                      CanUserDeleteRows="False"
-                      CanUserReorderColumns="False"
-                      CanUserResizeRows="False"
-                      CanUserResizeColumns="False"
-                      CanUserSortColumns="False"
-                      SelectionMode="Single"
-                      SelectionUnit="FullRow"
-                      RowHeaderWidth="0"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled"
-                      AlternationCount="2"
-                      RowBackground="WhiteSmoke"
-                      AlternatingRowBackground="White" 
-                      ItemsSource="{Binding CurrentWorkoutExercises}"
-                      SelectedItem="{Binding SelectedWorkoutExercise}"
-                      >
-                <DataGrid.Columns>
-                    <DataGridTextColumn 
-                        Header="tempo" 
-                        Binding="{Binding ExerciseName}" 
-                        Width="*"/>
-                    <DataGridTextColumn 
-                        Header="duration" 
-                        Binding="{Binding Duration}"
-                        Width="*"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Margin="0 0 20 0">
+                <StackPanel VerticalAlignment="Center">
+                    <Button 
+                        Content="↑" 
+                        Command="{Binding MoveUpCommand}" />
+                    <Button 
+                        Content="↓" 
+                        Command="{Binding MoveDownCommand}" />
+                </StackPanel>
+                <DataGrid x:Name="myWorkoutGrid" 
+                          Margin="10 0 10 0"
+                          Width="155"
+                          Height="110"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserReorderColumns="False"
+                          CanUserResizeRows="False"
+                          CanUserResizeColumns="False"
+                          CanUserSortColumns="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow"
+                          RowHeaderWidth="0"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled"
+                          AlternationCount="2"
+                          RowBackground="WhiteSmoke"
+                          AlternatingRowBackground="White" 
+                          ItemsSource="{Binding CurrentWorkoutExercises}"
+                          SelectedItem="{Binding SelectedWorkoutExercise}"
+                          >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn 
+                            Header="tempo" 
+                            Binding="{Binding ExerciseName}" 
+                            Width="*"/>
+                        <DataGridTextColumn 
+                            Header="duration" 
+                            Binding="{Binding Duration}"
+                            Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
             <Button Content="remove part of run" 
                     Command="{Binding RemoveExerciseCommand}"
                     HorizontalAlignment="Center"

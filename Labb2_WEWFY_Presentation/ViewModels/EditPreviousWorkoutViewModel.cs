@@ -36,6 +36,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
                 _selectedWorkoutExercise = value;
                 RaisePropertyChanged();
                 RemoveExerciseCommand.RaiseCanExecuteChanged();
+                MoveDownCommand.RaiseCanExecuteChanged();
+                MoveUpCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -133,6 +135,8 @@ namespace Labb2_WEWFY_Presentation.ViewModels
         public DelegateCommand UpdateWorkoutCommand { get; set; }
         public DelegateCommand AddExerciseCommand { get; set; }
         public DelegateCommand RemoveExerciseCommand { get; set; }
+        public DelegateCommand MoveUpCommand { get; set; }
+        public DelegateCommand MoveDownCommand { get; set; }
         public EditPreviousWorkoutViewModel(PreviousWorkoutsViewModel PreVM, RegisterWorkoutViewModel RegVM)
         {
             PreviousWorkoutsVM = PreVM;
@@ -140,6 +144,44 @@ namespace Labb2_WEWFY_Presentation.ViewModels
             AddExerciseCommand = new DelegateCommand(AddExercise, CanAddExercise);
             UpdateWorkoutCommand = new DelegateCommand(UpdateWorkout, CanUpdateWorkout);
             RemoveExerciseCommand = new DelegateCommand(RemoveExercise, CanRemoveExercise);
+            MoveDownCommand = new DelegateCommand(MoveDown, CanMoveDown);
+            MoveUpCommand = new DelegateCommand(MoveUp, CanMoveUp);
+            CurrentExercises = new ObservableCollection<ExerciseLogger>();
+        }
+        private bool CanMoveUp(object? arg)
+        {
+            var index = CurrentExercises.IndexOf(SelectedWorkoutExercise);
+            if (index > 0 && SelectedWorkoutExercise != null) return true;
+            else return false;
+        }
+
+        private void MoveUp(object? obj)
+        {
+            var index = CurrentExercises.IndexOf(SelectedWorkoutExercise);
+            if (index > 0)
+            {
+                CurrentExercises.Move(index, index - 1);
+                MoveUpCommand.RaiseCanExecuteChanged();
+                MoveDownCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        private bool CanMoveDown(object? arg)
+        {
+            var index = CurrentExercises.IndexOf(SelectedWorkoutExercise);
+            if (index < CurrentExercises.Count - 1 && SelectedWorkoutExercise != null) return true;
+            else return false;
+        }
+
+        private void MoveDown(object? obj)
+        {
+            var index = CurrentExercises.IndexOf(SelectedWorkoutExercise);
+            if (index < CurrentExercises.Count - 1)
+            {
+                CurrentExercises.Move(index, index + 1);
+                MoveDownCommand.RaiseCanExecuteChanged();
+                MoveUpCommand.RaiseCanExecuteChanged();
+            }
         }
         private bool TryGetExerciseDuration(out TimeSpan duration)
         {
