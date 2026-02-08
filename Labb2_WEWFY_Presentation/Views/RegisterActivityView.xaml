@@ -52,7 +52,9 @@
                 Orientation="Horizontal"
                 HorizontalAlignment="Center"
                 Margin="0 0 20 0">
-                <StackPanel VerticalAlignment="Center">
+                <StackPanel
+                    Margin="10 0 0 0"
+                    VerticalAlignment="Center">
                     <Button 
                         Content="↑" 
                         Command="{Binding MoveUpCommand}" />
@@ -61,7 +63,7 @@
                         Command="{Binding MoveDownCommand}" />
                 </StackPanel>
                 <DataGrid x:Name="myWorkoutGrid" 
-                          Margin="10 0 10 0"
+                          Margin="0 0 10 0"
                           Width="155"
                           Height="110"
                           AutoGenerateColumns="False"
