@@ -27,9 +27,8 @@ By this you can make your own conclusion of whatever works for you.
 
  #### Browse your total stats with a number of filters  
 <img width="157" height="294" alt="Total stats" src="https://github.com/user-attachments/assets/2f2b2c06-1ab7-44f1-9f8f-3e83a80f7e82" />  
-
- #### Add test data
-
+  
+Run types- and rating filters are inclusive: a workout must match at least one selected option, but may contain additional values. Water and fueling filters are restrictive: when enabled, only workouts that explicitly match the selected value are included.  
 
 ## Instructions
  - Clone this repository  
