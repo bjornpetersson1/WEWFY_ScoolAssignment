@@ -25,7 +25,9 @@
                 Text="include" 
                 HorizontalAlignment="Center"
                 FontWeight="Bold"
-                FontSize="13"/>
+                FontSize="13"
+                ToolTip="include-options include runs that match
+any (multiple) selected option, if nothing in a category is selected everything is included"/>
             <Separator Margin="0,1"/>
             <DockPanel>
                 <CheckBox 
@@ -117,7 +119,8 @@
                 Text="filter" 
                 HorizontalAlignment="Center"
                 FontWeight="Bold"
-                FontSize="13"/>
+                FontSize="13"
+                ToolTip="filters exclude runs that do not meet the selected condition, otherwise both yes and no are included"/>
             <Separator Margin="0,1"/>
             <DockPanel>
                 <CheckBox
